@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOR Spedition — Spedition &amp; logistik</title>
+    <meta
+      name="description"
+      content="NOR Spedition er et speditionsfirma der håndterer courier, sø, jernbane, luft og vej — inkl. express."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta http-equiv="refresh" content="0; url=home.html" />
+    <link rel="canonical" href="home.html" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Åbn menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+          </svg>
+        </button>
+        <div class="header-right">
+          <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
+            <a href="products.html" data-i18n="nav.products">Produkter</a>
+            <details class="nav-dropdown">
+              <summary data-i18n="nav.niceToKnow">Nice to know</summary>
+              <div class="nav-dropdown-menu" role="menu">
+                <a href="conversion.html" role="menuitem" data-i18n="nav.convert">Omregning</a>
+                <a href="insurance.html" role="menuitem" data-i18n="nav.insurance">Transportforsikring</a>
+                <a href="customs.html" role="menuitem" data-i18n="nav.customs">Told</a>
+                <a href="incoterms.html" role="menuitem" data-i18n="nav.incoterms">Incoterms</a>
+              </div>
+            </details>
+            <a href="road.html" data-i18n="nav.road">Landevej</a>
+            <a href="sea.html" data-i18n="nav.sea">Søfragt</a>
+            <a href="air.html" data-i18n="nav.air">Luftfragt</a>
+            <a href="rail.html" data-i18n="nav.rail">Jernbane</a>
+            <a href="news.html" data-i18n="nav.news">Nyheder</a>
+            <a href="who.html" data-i18n="nav.who">Hvem er vi</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+          </nav>
+          <div class="lang-switch" aria-label="Sprogvalg">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="section" aria-labelledby="latest-heading">
+        <div class="section-inner">
+          <p class="section-label" data-i18n="home.latestLabel">Nyheder</p>
+          <h1 id="latest-heading" data-i18n="home.latestH2">Seneste indlæg</h1>
+          <p class="section-intro" data-i18n="home.latestBody">
+            Her er et par eksempelindlæg (lorem ipsum), så I kan se opsætningen. Erstat dem med jeres egne nyheder eller cases.
+          </p>
+          <div class="posts-grid">
+            <article class="post-card">
+              <p class="post-meta">30. marts 2026</p>
+              <h2 class="post-title">Lorem ipsum dolor sit amet</h2>
+              <p class="post-excerpt">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Lorem ipsum dolor sit amet">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">18. marts 2026</p>
+              <h2 class="post-title">Sed nisi. Nulla quis sem</h2>
+              <p class="post-excerpt">
+                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Sed nisi. Nulla quis sem">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">2. marts 2026</p>
+              <h2 class="post-title">Maecenas tincidunt lacus</h2>
+              <p class="post-excerpt">
+                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Maecenas tincidunt lacus">Læs mere</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer compact">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> NOR Spedition</p>
+        <div class="footer-contact" aria-label="Kontakt">
+          <span class="footer-label" data-i18n="footer.contactLabel">Kontakt</span>
+          <a class="footer-item" href="tel:[telefonnummer]" data-i18n="footer.phone">Telefon</a>
+          <a class="footer-item" href="mailto:[email@firma.dk]" data-i18n="footer.email">E-mail</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOR Spedition — Spedition &amp; logistik</title>
+    <meta
+      name="description"
+      content="NOR Spedition er et speditionsfirma der håndterer courier, sø, jernbane, luft og vej — inkl. express."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img
+            class="brand-mark"
+            src="assets/logo-nor-spedition.png"
+            alt="NOR Spedition"
+            width="1024"
+            height="576"
+          />
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Åbn menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+          </svg>
+        </button>
+        <div class="header-right">
+          <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
+            <a href="products.html" data-i18n="nav.products">Produkter</a>
+            <details class="nav-dropdown">
+              <summary data-i18n="nav.niceToKnow">Nice to know</summary>
+              <div class="nav-dropdown-menu" role="menu">
+                <a href="conversion.html" role="menuitem" data-i18n="nav.convert">Omregning</a>
+                <a href="insurance.html" role="menuitem" data-i18n="nav.insurance">Transportforsikring</a>
+                <a href="customs.html" role="menuitem" data-i18n="nav.customs">Told</a>
+                <a href="incoterms.html" role="menuitem" data-i18n="nav.incoterms">Incoterms</a>
+              </div>
+            </details>
+            <a href="road.html" data-i18n="nav.road">Landevej</a>
+            <a href="sea.html" data-i18n="nav.sea">Søfragt</a>
+            <a href="air.html" data-i18n="nav.air">Luftfragt</a>
+            <a href="rail.html" data-i18n="nav.rail">Jernbane</a>
+            <a href="news.html" data-i18n="nav.news">Nyheder</a>
+            <a href="who.html" data-i18n="nav.who">Hvem er vi</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+          </nav>
+          <div class="lang-switch" aria-label="Sprogvalg">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="section" aria-labelledby="latest-heading">
+        <div class="section-inner">
+          <p class="section-label" data-i18n="home.latestLabel">Nyheder</p>
+          <h1 id="latest-heading" data-i18n="home.latestH2">Seneste indlæg</h1>
+          <p class="section-intro" data-i18n="home.latestBody">
+            Her er et par eksempelindlæg (lorem ipsum), så I kan se opsætningen. Erstat dem med jeres egne nyheder eller cases.
+          </p>
+          <div class="posts-grid">
+            <article class="post-card">
+              <p class="post-meta">30. marts 2026</p>
+              <h2 class="post-title">Lorem ipsum dolor sit amet</h2>
+              <p class="post-excerpt">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Lorem ipsum dolor sit amet">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">18. marts 2026</p>
+              <h2 class="post-title">Sed nisi. Nulla quis sem</h2>
+              <p class="post-excerpt">
+                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Sed nisi. Nulla quis sem">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">2. marts 2026</p>
+              <h2 class="post-title">Maecenas tincidunt lacus</h2>
+              <p class="post-excerpt">
+                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+              </p>
+              <a class="post-link" href="news.html" aria-label="Læs mere: Maecenas tincidunt lacus">Læs mere</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer compact">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> NOR Spedition</p>
+        <div class="footer-contact" aria-label="Kontakt">
+          <span class="footer-label" data-i18n="footer.contactLabel">Kontakt</span>
+          <a class="footer-item" href="tel:[telefonnummer]" data-i18n="footer.phone">Telefon</a>
+          <a class="footer-item" href="mailto:[email@firma.dk]" data-i18n="footer.email">E-mail</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOR Spedition — Spedition &amp; logistik</title>
+    <meta
+      name="description"
+      content="NOR Spedition er et speditionsfirma der håndterer courier, sø, jernbane, luft og vej — inkl. express."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img
+            class="brand-mark"
+            src="assets/logo-nor-spedition.png"
+            alt="NOR Spedition"
+            width="1024"
+            height="576"
+          />
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Åbn menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+          </svg>
+        </button>
+        <div class="header-right">
+          <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
+            <a href="products.html" data-i18n="nav.products">Produkter</a>
+            <details class="nav-dropdown">
+              <summary data-i18n="nav.niceToKnow">Nice to know</summary>
+              <div class="nav-dropdown-menu" role="menu">
+                <a href="conversion.html" role="menuitem" data-i18n="nav.convert">Omregning</a>
+                <a href="insurance.html" role="menuitem" data-i18n="nav.insurance">Transportforsikring</a>
+                <a href="customs.html" role="menuitem" data-i18n="nav.customs">Told</a>
+                <a href="incoterms.html" role="menuitem" data-i18n="nav.incoterms">Incoterms</a>
+              </div>
+            </details>
+            <a href="road.html" data-i18n="nav.road">Landevej</a>
+            <a href="sea.html" data-i18n="nav.sea">Søfragt</a>
+            <a href="air.html" data-i18n="nav.air">Luftfragt</a>
+            <a href="rail.html" data-i18n="nav.rail">Jernbane</a>
+            <a href="news.html" data-i18n="nav.news">Nyheder</a>
+            <a href="who.html" data-i18n="nav.who">Hvem er vi</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+          </nav>
+          <div class="lang-switch" aria-label="Sprogvalg">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">
+              🇩🇰
+            </button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">
+              🇬🇧
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero hero-video" aria-labelledby="hero-heading">
+        <video
+          class="hero-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/hero-placeholder.svg"
+          aria-label="Intro video (placeholder)"
+        >
+          <!-- Udskift med jeres egen video -->
+          <source src="assets/intro-placeholder.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay">
+          <div class="hero-inner">
+            <img class="hero-logo" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" />
+            <h1 id="hero-heading" class="visually-hidden" data-i18n="hero.h1">NOR Spedition</h1>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#kontakt" data-i18n="hero.ctaPrimary">Kontakt os</a>
+              <a class="btn btn-outline" href="#tilbud" data-i18n="hero.ctaSecondary">Få et tilbud</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="nyheder" aria-labelledby="nyheder-heading">
+        <div class="section-inner">
+          <p class="section-label" data-i18n="news.label">Nyheder</p>
+          <h2 id="nyheder-heading" data-i18n="news.h2">Seneste indlæg</h2>
+          <p class="section-intro" data-i18n="news.body">
+            Her er et par eksempelindlæg (lorem ipsum), så I kan se opsætningen. Erstat dem med jeres egne nyheder eller cases.
+          </p>
+          <div class="posts-grid">
+            <article class="post-card">
+              <p class="post-meta">30. marts 2026</p>
+              <h3 class="post-title">Lorem ipsum dolor sit amet</h3>
+              <p class="post-excerpt">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              </p>
+              <a class="post-link" href="#" aria-label="Læs mere: Lorem ipsum dolor sit amet">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">18. marts 2026</p>
+              <h3 class="post-title">Sed nisi. Nulla quis sem</h3>
+              <p class="post-excerpt">
+                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+              </p>
+              <a class="post-link" href="#" aria-label="Læs mere: Sed nisi. Nulla quis sem">Læs mere</a>
+            </article>
+            <article class="post-card">
+              <p class="post-meta">2. marts 2026</p>
+              <h3 class="post-title">Maecenas tincidunt lacus</h3>
+              <p class="post-excerpt">
+                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+              </p>
+              <a class="post-link" href="#" aria-label="Læs mere: Maecenas tincidunt lacus">Læs mere</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="hvem" aria-labelledby="om-heading">
+        <div class="section-inner about-split">
+          <div>
+            <p class="section-label" data-i18n="about.label">Hvem er vi</p>
+            <h2 id="om-heading" data-i18n="about.h2">NOR Spedition</h2>
+            <p class="section-intro" data-i18n="about.body">
+              Vi er et speditionsfirma, der håndterer courier, sø, jernbane, luft og vej — inkl. express deliveries.
+              Vi går op i tydelig kommunikation, faste aftaler og at du ved hvor sagen står.
+            </p>
+          </div>
+          <figure class="about-visual">
+            <img
+              src="assets/office-placeholder.svg"
+              alt=""
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+            <figcaption class="visually-hidden" data-i18n="about.figure">
+              Illustrationsbillede — udskift med jeres eget foto
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="produkter" aria-labelledby="services-heading">
+        <div class="section-inner">
+          <p class="section-label" data-i18n="services.label">Produkter</p>
+          <h2 id="services-heading" data-i18n="services.h2">Transportformer</h2>
+          <p class="section-intro" data-i18n="services.body">
+            Her er et hurtigt overblik. Klik i menuen for at hoppe direkte til en transportform.
+          </p>
+          <div class="services-grid">
+            <article class="service-card" id="luftfragt">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+              </div>
+              <h3 data-i18n="svc.air.h">Luftfragt</h3>
+              <p data-i18n="svc.air.p">Når tiden er vigtig, og der skal frem globalt.</p>
+            </article>
+            <article class="service-card" id="sofragt">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18l-1.5-5h-15L3 18z"/><path d="M5 13 7 8h10l2 5"/><path d="M2 20h20"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+              </div>
+              <h3 data-i18n="svc.sea.h">Søfragt</h3>
+              <p data-i18n="svc.sea.p">Container og stykgods med fokus på plan og pris.</p>
+            </article>
+            <article class="service-card" id="landevej">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+              </div>
+              <h3 data-i18n="svc.road.h">Landevej</h3>
+              <p data-i18n="svc.road.p">Daglige afgange, stykgods og fullload – efter behov.</p>
+            </article>
+            <article class="service-card" id="jernbane">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v6"/><path d="M16 3v6"/><path d="M4 11h16"/><path d="M6 17h2"/><path d="M16 17h2"/><path d="M6 21h12a2 2 0 0 0 2-2v-6a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v6a2 2 0 0 0 2 2z"/></svg>
+              </div>
+              <h3 data-i18n="svc.rail.h">Jernbane</h3>
+              <p data-i18n="svc.rail.p">Et stærkt alternativ på udvalgte korridorer.</p>
+            </article>
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+              </div>
+              <h3>Courier</h3>
+              <p data-i18n="svc.courier.p">Direkte levering med tæt opfølgning og sporbarhed.</p>
+            </article>
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+              </div>
+              <h3>Express</h3>
+              <p data-i18n="svc.express.p">Når det haster — hurtig afgang og klar forventningsafstemning.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="nice" aria-labelledby="nice-heading">
+        <div class="section-inner">
+          <p class="section-label">Nice to know</p>
+          <h2 id="nice-heading">Kort fortalt</h2>
+          <div class="nice-grid">
+            <article class="nice-card" id="omregning">
+              <h3>Omregning</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.</p>
+            </article>
+            <article class="nice-card" id="forsikring">
+              <h3>Transportforsikring</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.</p>
+            </article>
+            <article class="nice-card" id="told">
+              <h3>Told</h3>
+              <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.</p>
+            </article>
+            <article class="nice-card" id="incoterms">
+              <h3>Incoterms</h3>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="tilbud" aria-labelledby="tilbud-heading">
+        <div class="section-inner">
+          <p class="section-label">Få et tilbud</p>
+          <h2 id="tilbud-heading">Send en kort forespørgsel</h2>
+          <p class="section-intro">
+            Dette er en placeholder-form, så I kan se layoutet. Den kan kobles på e-mail eller et system senere.
+          </p>
+          <form class="quote-form" action="#" method="post">
+            <div class="form-grid">
+              <label>
+                <span>Foretrukken service</span>
+                <select>
+                  <option>Landevej</option>
+                  <option>Søfragt</option>
+                  <option>Luftfragt</option>
+                  <option>Jernbane</option>
+                  <option>Courier</option>
+                  <option>Express</option>
+                </select>
+              </label>
+              <label>
+                <span>Transportbehov</span>
+                <select>
+                  <option>Enkelt forsendelse</option>
+                  <option>Regelmæssigt transportbehov</option>
+                </select>
+              </label>
+              <label>
+                <span>Afgangsadresse</span>
+                <input type="text" placeholder="[adresse]" />
+              </label>
+              <label>
+                <span>Leveringsadresse</span>
+                <input type="text" placeholder="[adresse]" />
+              </label>
+              <label class="full">
+                <span>Forsendelsesdetaljer</span>
+                <textarea rows="4" placeholder="[mål, vægt, antal kolli, beskrivelse]"></textarea>
+              </label>
+              <label>
+                <span>Firma</span>
+                <input type="text" placeholder="[firmanavn]" />
+              </label>
+              <label>
+                <span>E-mail</span>
+                <input type="email" placeholder="[email@firma.dk]" />
+              </label>
+              <label>
+                <span>Telefon</span>
+                <input type="tel" placeholder="[telefonnummer]" />
+              </label>
+              <div class="full">
+                <button class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="team" aria-labelledby="team-heading">
+        <div class="section-inner">
+          <p class="section-label">Team</p>
+          <h2 id="team-heading" data-i18n="team.h2">Menneskerne bag NOR Spedition</h2>
+          <p class="section-intro" data-i18n="team.body">
+            Vi er et lille team, så du taler med folk der faktisk følger sagen hele vejen.
+          </p>
+          <div class="team-grid">
+            <article class="team-card">
+              <div class="team-photo">
+                <img
+                  src="assets/team-mathias-placeholder.svg"
+                  alt="Pladsholder til billede af Mathias Bruse Kristensen"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Mathias Bruse Kristensen</h3>
+              <p>NOR Spedition</p>
+            </article>
+            <article class="team-card">
+              <div class="team-photo">
+                <img
+                  src="assets/team-viktor-placeholder.svg"
+                  alt="Pladsholder til billede af Viktor Mejlvang"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Viktor Mejlvang</h3>
+              <p>NOR Spedition</p>
+            </article>
+            <article class="team-card">
+              <div class="team-photo">
+                <img
+                  src="assets/team-victor-placeholder.svg"
+                  alt="Pladsholder til billede af Victor Vendelbo"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Victor Vendelbo</h3>
+              <p>NOR Spedition</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="kontakt" aria-labelledby="kontakt-heading">
+        <div class="section-inner contact-block">
+          <div>
+            <p class="section-label" data-i18n="contact.label">Kontakt</p>
+            <h2 id="kontakt-heading" data-i18n="contact.h2">Kontakt os</h2>
+            <p class="section-intro" data-i18n="contact.body">
+              Ring eller skriv. Hvis du sender få oplysninger (hvad, hvorfra, hvortil og hvornår),
+              så vender vi hurtigt tilbage.
+            </p>
+          </div>
+          <div class="contact-details">
+            <dl>
+              <dt data-i18n="contact.phone">Telefon</dt>
+              <dd><span class="contact-placeholder" data-i18n="contact.phoneValue">[telefonnummer]</span></dd>
+              <dt data-i18n="contact.email">E-mail</dt>
+              <dd><span class="contact-placeholder" data-i18n="contact.emailValue">[email@firma.dk]</span></dd>
+              <dt data-i18n="contact.address">Adresse</dt>
+              <dd>
+                <span class="contact-placeholder" data-i18n="contact.addressValue"
+                  >[Firmanavn]<br />[gade og nr.]<br />[postnr. og by]<br />Danmark</span
+                >
+              </dd>
+              <dt data-i18n="contact.reg">CVR</dt>
+              <dd><span class="contact-placeholder" data-i18n="contact.regValue">[CVR-nummer]</span></dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> NOR Spedition</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#top" data-i18n="footer.top">Til toppen</a>
+          <a href="#kontakt" data-i18n="footer.contact">Kontakt</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        document.getElementById("year").textContent = new Date().getFullYear();
+        var btn = document.querySelector(".nav-toggle");
+        var nav = document.getElementById("main-nav");
+        var currentLang = "da";
+        if (btn && nav) {
+          btn.addEventListener("click", function () {
+            var open = nav.classList.toggle("is-open");
+            btn.setAttribute("aria-expanded", open);
+            if (currentLang === "en") btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+            else btn.setAttribute("aria-label", open ? "Luk menu" : "Åbn menu");
+          });
+        }
+
+        var metaDesc = document.querySelector('meta[name="description"]');
+        var langButtons = Array.prototype.slice.call(document.querySelectorAll(".lang-btn"));
+        var translations = {
+          da: {
+            title: "NOR Spedition — Spedition & logistik",
+            description:
+              "NOR Spedition er et speditionsfirma der håndterer courier, sø, jernbane, luft og vej — inkl. express.",
+            "nav.products": "Produkter",
+            "nav.niceToKnow": "Nice to know",
+            "nav.convert": "Omregning",
+            "nav.insurance": "Transportforsikring",
+            "nav.customs": "Told",
+            "nav.incoterms": "Incoterms",
+            "nav.road": "Landevej",
+            "nav.sea": "Søfragt",
+            "nav.air": "Luftfragt",
+            "nav.rail": "Jernbane",
+            "nav.news": "Nyheder",
+            "nav.who": "Hvem er vi",
+            "nav.contact": "Kontakt",
+            "hero.h1": "NOR Spedition",
+            "hero.ctaPrimary": "Kontakt os",
+            "hero.ctaSecondary": "Få et tilbud",
+            "about.label": "Hvem er vi",
+            "about.h2": "NOR Spedition",
+            "about.body":
+              "Vi er et speditionsfirma, der håndterer courier, sø, jernbane, luft og vej — inkl. express deliveries. Vi går op i tydelig kommunikation, faste aftaler og at du ved hvor sagen står.",
+            "about.figure": "Illustrationsbillede — udskift med jeres eget foto",
+            "services.label": "Produkter",
+            "services.h2": "Transportformer",
+            "services.body": "Her er et hurtigt overblik. Klik i menuen for at hoppe direkte til en transportform.",
+            "svc.air.h": "Luftfragt",
+            "svc.air.p": "Når tiden er vigtig, og der skal frem globalt.",
+            "svc.sea.h": "Søfragt",
+            "svc.sea.p": "Container og stykgods med fokus på plan og pris.",
+            "svc.road.h": "Landevej",
+            "svc.road.p": "Daglige afgange, stykgods og fullload – efter behov.",
+            "svc.rail.h": "Jernbane",
+            "svc.rail.p": "Et stærkt alternativ på udvalgte korridorer.",
+            "svc.courier.p": "Direkte levering med tæt opfølgning og sporbarhed.",
+            "svc.express.p": "Når det haster — hurtig afgang og klar forventningsafstemning.",
+            "team.h2": "Menneskerne bag NOR Spedition",
+            "team.body": "Vi er et lille team, så du taler med folk der faktisk følger sagen hele vejen.",
+            "contact.label": "Kontakt",
+            "contact.h2": "Kontakt os",
+            "contact.body":
+              "Ring eller skriv. Hvis du sender få oplysninger (hvad, hvorfra, hvortil og hvornår), så vender vi hurtigt tilbage.",
+            "contact.phone": "Telefon",
+            "contact.phoneValue": "[telefonnummer]",
+            "contact.email": "E-mail",
+            "contact.emailValue": "[email@firma.dk]",
+            "contact.address": "Adresse",
+            "contact.addressValue": "[Firmanavn]<br />[gade og nr.]<br />[postnr. og by]<br />Danmark",
+            "contact.reg": "CVR",
+            "contact.regValue": "[CVR-nummer]",
+            "footer.top": "Til toppen",
+            "footer.contact": "Kontakt",
+          },
+          en: {
+            title: "NOR Spedition — Freight Forwarding & Logistics",
+            description:
+              "NOR Spedition handles courier, sea, rail, air and road shipments — including express deliveries.",
+            "nav.products": "Products",
+            "nav.niceToKnow": "Nice to know",
+            "nav.convert": "Conversion",
+            "nav.insurance": "Cargo insurance",
+            "nav.customs": "Customs",
+            "nav.incoterms": "Incoterms",
+            "nav.road": "Road",
+            "nav.sea": "Sea",
+            "nav.air": "Air",
+            "nav.rail": "Rail",
+            "nav.news": "News",
+            "nav.who": "Who we are",
+            "nav.contact": "Contact",
+            "hero.h1": "NOR Spedition",
+            "hero.ctaPrimary": "Contact us",
+            "hero.ctaSecondary": "Get a quote",
+            "about.label": "Who we are",
+            "about.h2": "NOR Spedition",
+            "about.body":
+              "We handle courier, sea, rail, air and road shipments — including express deliveries. We focus on clear communication, solid agreements and keeping you updated.",
+            "about.figure": "Illustration image — replace with your own photo",
+            "services.label": "Products",
+            "services.h2": "Transport modes",
+            "services.body": "Quick overview. Use the menu to jump directly to a transport mode.",
+            "svc.air.h": "Air freight",
+            "svc.air.p": "When time matters and it needs to move globally.",
+            "svc.sea.h": "Sea freight",
+            "svc.sea.p": "Containers and part loads with planning and cost in mind.",
+            "svc.road.h": "Road",
+            "svc.road.p": "Regular departures, part loads and full loads — as needed.",
+            "svc.rail.h": "Rail freight",
+            "svc.rail.p": "A strong alternative on selected corridors.",
+            "svc.courier.p": "Direct delivery with close follow-up and tracking.",
+            "svc.express.p": "When it’s urgent — fast departure and clear expectations.",
+            "team.h2": "The people behind NOR Spedition",
+            "team.body": "We’re a small team — you speak to people who follow your shipment end-to-end.",
+            "contact.label": "Contact",
+            "contact.h2": "Get in touch",
+            "contact.body":
+              "Call or write. If you share a few details (what, from where, to where, and when), we’ll get back quickly.",
+            "contact.phone": "Phone",
+            "contact.phoneValue": "[phone number]",
+            "contact.email": "Email",
+            "contact.emailValue": "[email@company.com]",
+            "contact.address": "Address",
+            "contact.addressValue": "[Company name]<br />[street and number]<br />[ZIP and city]<br />Denmark",
+            "contact.reg": "Company reg. no.",
+            "contact.regValue": "[registration number]",
+            "footer.top": "Back to top",
+            "footer.contact": "Contact",
+          },
+        };
+
+        function applyLang(lang) {
+          var dict = translations[lang] || translations.da;
+          currentLang = lang;
+          document.documentElement.lang = lang;
+          document.title = dict.title;
+          if (metaDesc) metaDesc.setAttribute("content", dict.description);
+
+          var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
+          nodes.forEach(function (el) {
+            var key = el.getAttribute("data-i18n");
+            var val = dict[key];
+            if (typeof val === "string") {
+              if (val.indexOf("<br") !== -1) el.innerHTML = val;
+              else el.textContent = val;
+            }
+          });
+
+          langButtons.forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+          });
+
+          // Update menu toggle labels for current language
+          if (btn) {
+            var expanded = btn.getAttribute("aria-expanded") === "true";
+            if (lang === "en") btn.setAttribute("aria-label", expanded ? "Close menu" : "Open menu");
+            else btn.setAttribute("aria-label", expanded ? "Luk menu" : "Åbn menu");
+          }
+        }
+
+        langButtons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            applyLang(b.getAttribute("data-lang"));
+          });
+        });
+
+        applyLang("da");
+      })();
+    </script>
+  </body>
+</html>
