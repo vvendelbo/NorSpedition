@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOR Spedition — Admin</title>
+    <meta name="description" content="Admin-portal til NOR Spedition: udskift placeholder-billeder og konfigurér kontaktformular." />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/admin.js" defer></script>
+  </head>
+  <body class="admin-body">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" />
+        </a>
+        <div class="header-right">
+          <nav class="nav-main" aria-label="Admin navigation">
+            <a href="index.html">← Tilbage til siden</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-inner">
+          <p class="section-label">Admin</p>
+          <h1>Billeder <em>&amp; formular.</em></h1>
+          <p class="section-intro">
+            Skift placeholder-billeder ud med rigtige fotos og konfigurér kontaktformularen. Ændringerne gemmes lokalt i browseren via <code>localStorage</code> —
+            det er <strong>kun dig der ser dem i denne browser</strong>. Brug “Eksport” når du vil flytte indstillinger til en anden computer eller publicere.
+          </p>
+
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="button" id="export-btn">Eksportér indstillinger (JSON)</button>
+            <label class="btn btn-outline" for="import-file" style="cursor:pointer;">Importér JSON…</label>
+            <input type="file" id="import-file" accept="application/json" hidden />
+            <button class="btn btn-outline" type="button" id="reset-all-btn">Nulstil alle billeder</button>
+          </div>
+          <p class="form-status" id="admin-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="section-inner wide">
+          <h2>Billed-slots</h2>
+          <p class="section-intro">
+            Hver kasse svarer til ét placeholder-billede på sitet. Upload et nyt billede for at overskrive — klik “Nulstil” for at vende tilbage til standard.
+          </p>
+
+          <div class="admin-grid" id="admin-grid"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <h2>Kontaktformular — endpoint</h2>
+          <p class="section-intro">
+            Som standard åbner “Spørg på pris”-knappen brugerens e-mailprogram med en forudfyldt besked til <code>contact@norspedition.dk</code>. Hvis du vil sende
+            forespørgslerne automatisk uden at kunden skal have en mail-klient, så konfigurér et form-endpoint herunder.
+          </p>
+
+          <div class="admin-field">
+            <label for="endpoint-input">
+              <span>Form endpoint URL</span>
+              <input type="url" id="endpoint-input" placeholder="https://formspree.io/f/xxxxxxx" />
+            </label>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="button" id="endpoint-save">Gem endpoint</button>
+              <button class="btn btn-outline" type="button" id="endpoint-clear">Fjern endpoint</button>
+            </div>
+            <p class="form-foot">
+              Gemmes i browserens localStorage under nøglen <code>nor-spedition.form-endpoint</code>. Når du er klar til produktion, skal værdien i stedet
+              hardcodes i <code>index.html</code> på formularen (<code>data-endpoint="..."</code>).
+            </p>
+          </div>
+
+          <details class="admin-guide">
+            <summary>Guide: sådan får du kontaktformularen op at køre</summary>
+            <div class="admin-guide-body">
+              <h3>Tre oplagte veje</h3>
+
+              <h4>Option A — Formspree (nemmest, anbefalet)</h4>
+              <ol>
+                <li>Opret gratis konto på <a href="https://formspree.io" target="_blank" rel="noopener">formspree.io</a>.</li>
+                <li>Opret et nyt form med modtager-adressen <code>contact@norspedition.dk</code>.</li>
+                <li>Kopiér form-endpointet (fx <code>https://formspree.io/f/abcd1234</code>).</li>
+                <li>Indsæt det i feltet ovenfor og klik <strong>Gem endpoint</strong> for at teste lokalt.</li>
+                <li>Når det virker: åbn <code>index.html</code> og tilføj attributten <code>data-endpoint="https://formspree.io/f/abcd1234"</code>
+                  på <code>&lt;form id="quote-form"&gt;</code>. Så virker det uden localStorage og for alle besøgende.</li>
+              </ol>
+
+              <h4>Option B — Netlify Forms (hvis du hoster på Netlify)</h4>
+              <ol>
+                <li>Deploy siten på Netlify (drag-and-drop mappe, eller git-integration).</li>
+                <li>Tilføj <code>data-netlify="true"</code> og <code>name="tilbud"</code> til <code>&lt;form id="quote-form"&gt;</code>.</li>
+                <li>Tilføj <code>&lt;input type="hidden" name="form-name" value="tilbud" /&gt;</code> indeni formularen.</li>
+                <li>Gå til Netlify-dashboardet → Forms → indstil notifikation til <code>contact@norspedition.dk</code>.</li>
+                <li>Fjern <code>data-endpoint</code>-attributten hvis du har sat den.</li>
+              </ol>
+
+              <h4>Option C — mailto: (fungerer uden opsætning)</h4>
+              <ul>
+                <li>Hvis der ikke er konfigureret et endpoint, åbner formularen i stedet brugerens e-mail-klient med alle felter forudfyldt.</li>
+                <li>Virker på stationære maskiner med konfigureret mail-app, men er upålideligt på mobiler og webmail.</li>
+                <li>Brug kun denne som midlertidig løsning.</li>
+              </ul>
+
+              <h3>Faststøbning til produktion</h3>
+              <p>
+                LocalStorage-konfigurationen her er god til test på din maskine. Når du vil have det permanent for alle besøgende,
+                skal du redigere <code>index.html</code> direkte og tilføje <code>data-endpoint="https://..."</code> på formularen:
+              </p>
+              <pre><code>&lt;form class="quote-form" id="quote-form" novalidate
+      data-endpoint="https://formspree.io/f/xxxxxxx"&gt;</code></pre>
+
+              <h3>Sikkerhed og spam</h3>
+              <ul>
+                <li>Både Formspree og Netlify har indbygget honeypot / reCAPTCHA.</li>
+                <li>Undgå at eksponere egen SMTP-konto direkte i klient-koden.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Footer">
+      <div class="footer-inner">
+        <p class="footer-copy">© <span id="year"></span> NOR Spedition — Admin</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Til siden</a>
+        </nav>
+      </div>
+    </footer>
+
+    <template id="admin-slot-template">
+      <article class="admin-slot">
+        <div class="admin-slot-preview">
+          <img alt="" />
+        </div>
+        <div class="admin-slot-body">
+          <h3 class="admin-slot-title"></h3>
+          <p class="admin-slot-desc"></p>
+          <p class="admin-slot-key"><code></code></p>
+          <div class="admin-slot-actions">
+            <label class="btn btn-primary admin-upload-label">
+              <span>Vælg billede…</span>
+              <input type="file" accept="image/*" hidden />
+            </label>
+            <button type="button" class="btn btn-outline admin-reset-btn">Nulstil</button>
+          </div>
+        </div>
+      </article>
+    </template>
+  </body>
+</html>

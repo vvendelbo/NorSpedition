@@ -18,7 +18,7 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="NOR Spedition">
-          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" />
+          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" data-img-key="logo" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Åbn menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -29,8 +29,7 @@
           <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
             <a href="#transportformer">Transportformer</a>
             <a href="#team">Team</a>
-            <a href="#om">Om</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="mailto:contact@norspedition.dk">Kontakt</a>
           </nav>
         </div>
       </div>
@@ -38,13 +37,14 @@
 
     <main id="top">
       <section class="hero hero-photo" aria-labelledby="hero-heading">
-        <img class="hero-img" src="assets/hero-placeholder.svg" alt="" width="1200" height="675" />
+        <img class="hero-img" src="assets/hero-placeholder.svg" alt="" width="1200" height="675" data-img-key="hero" />
         <div class="hero-inner">
           <p class="hero-kicker">Spedition &amp; logistik</p>
           <h1 id="hero-heading">Aftaler <em>der holder.</em></h1>
           <p class="hero-lead">Forudsigelighed, transparens og stærke partnerskaber — på tværs af landevej, sø, luft og rail.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#kontakt">Kontakt os</a>
+            <a class="btn btn-primary" href="mailto:contact@norspedition.dk">Kontakt os</a>
+            <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
             <a class="btn btn-outline" href="#transportformer">Se transportformer</a>
           </div>
         </div>
@@ -56,28 +56,28 @@
           <h2 id="keypoints-heading" class="section-title">Det får du, når vi rykker dit gods</h2>
           <div class="keypoint-row" aria-label="Key points">
             <article class="keypoint">
-              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" />
+              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" data-img-key="keypoint-overblik" />
               <div class="keypoint-text">
                 <h3>Overblik</h3>
                 <p>En fast kontaktperson og klare aftaler fra booking til levering.</p>
               </div>
             </article>
             <article class="keypoint">
-              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" />
+              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" data-img-key="keypoint-tempo" />
               <div class="keypoint-text">
                 <h3>Tempo</h3>
                 <p>Hurtig respons og realistiske ETA’er — også når det haster.</p>
               </div>
             </article>
             <article class="keypoint">
-              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" />
+              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" data-img-key="keypoint-struktur" />
               <div class="keypoint-text">
                 <h3>Struktur</h3>
                 <p>Dokumenter og opfølgning samlet, så intet falder mellem to stole.</p>
               </div>
             </article>
             <article class="keypoint">
-              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" />
+              <img class="keypoint-media" src="assets/card-placeholder.svg" alt="" width="300" height="300" loading="lazy" data-img-key="keypoint-netvaerk" />
               <div class="keypoint-text">
                 <h3>Netværk</h3>
                 <p>Stærke partnerskaber — vi finder kapaciteten, også på de vanskelige dage.</p>
@@ -96,9 +96,17 @@
             et bredt netværk — og hjælper dig med at vælge rigtigt ud fra tid, pris og robusthed. Klik på et kort for at se forcer, svagheder og hvilke materieltyper vi typisk anvender.
           </p>
 
+          <div class="click-hint-floater" aria-hidden="true">
+            <span class="click-hint-text">Tryk på et kort</span>
+            <svg class="click-hint-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14" />
+              <path d="m6 13 6 6 6-6" />
+            </svg>
+          </div>
+
           <div class="transport-grid big" aria-label="Transportformer">
             <button class="transport-card transport-card--visual" type="button" data-transport="road" data-modal-open>
-              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" />
+              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" data-img-key="transport-road" />
               <span class="card-badge">01 · Landevej</span>
               <div class="card-overlay">
                 <h3>Landevej</h3>
@@ -107,7 +115,7 @@
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="sea" data-modal-open>
-              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" />
+              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" data-img-key="transport-sea" />
               <span class="card-badge">02 · Sø</span>
               <div class="card-overlay">
                 <h3>Sø</h3>
@@ -116,7 +124,7 @@
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="air" data-modal-open>
-              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" />
+              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" data-img-key="transport-air" />
               <span class="card-badge">03 · Luft</span>
               <div class="card-overlay">
                 <h3>Luft</h3>
@@ -125,7 +133,7 @@
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="rail" data-modal-open>
-              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" />
+              <img class="card-media" src="assets/card-placeholder.svg" alt="" width="1200" height="675" loading="lazy" data-img-key="transport-rail" />
               <span class="card-badge">04 · Rail</span>
               <div class="card-overlay">
                 <h3>Rail</h3>
@@ -167,33 +175,31 @@
           <div class="team-roster" aria-label="Medarbejdere">
             <article class="team-member">
               <div class="team-photo">
-                <img src="assets/team-mathias-placeholder.svg" alt="Mathias Bruse Kristensen" width="400" height="400" loading="lazy" />
+                <img src="assets/team-mathias-placeholder.svg" alt="Mathias Bruse Kristensen" width="400" height="400" loading="lazy" data-img-key="team-mathias" />
               </div>
               <div class="team-body">
-                <p class="team-role">Partner · Oversize &amp; sikkerhedsgodkendt luftfragt</p>
+                <p class="team-role">Specialist i særtransport, Airport Logistics &amp; Pricing</p>
                 <h3 class="team-name">Mathias Bruse Kristensen</h3>
                 <p class="team-bio">
-                  Specialist i overdimensioneret gods samt kørsel og screening af sikkerhedsgodkendt gods til luftfragt. Står for de forsendelser der ikke passer i en standardtrailer — og sørger for at dokumenter og screening er i orden hele vejen.
+                  Ekspert i håndtering af overdimensioneret gods og komplekse leveringer til europæiske lufthavne. Specialist i at kunne navigere sikkert i de forsendelser, der kræver mere end en standardløsning, og bruger sin erfaring som Pricing Specialist til at sikre løsninger og rater, der skaber reel værdi.
                 </p>
                 <ul class="team-strengths" aria-label="Forcer">
-                  <li>Overdimensioneret &amp; tungt gods — platform, tiefbett, tele</li>
-                  <li>Screening og kørsel af sikkerhedsgodkendt luftfragt</li>
-                  <li>Særligt stærk i <strong>Nordeuropa</strong> og <strong>Benelux</strong></li>
+                  <li>Særtransport: Specialist i komplekst og overdimensioneret grej.</li>
+                  <li>Lufthavne: Koordinering af screening og kompleks lufthavnslogistik.</li>
+                  <li>Pricing: Skarpe rater baseret på omfattende europæisk know-how.</li>
                 </ul>
                 <dl class="team-contact">
                   <dt>Direkte</dt>
-                  <dd><a href="tel:+4500000000">+45 00 00 00 00</a></dd>
+                  <dd><a href="tel:+4520967963">+45 20 96 79 63</a></dd>
                   <dt>E-mail</dt>
-                  <dd><a href="mailto:mathias@norspedition.dk">mathias@norspedition.dk</a></dd>
-                  <dt>Lokation</dt>
-                  <dd>Hirtshals</dd>
+                  <dd><a href="mailto:mbk@norspedition.dk">mbk@norspedition.dk</a></dd>
                 </dl>
               </div>
             </article>
 
             <article class="team-member">
               <div class="team-photo">
-                <img src="assets/team-viktor-placeholder.svg" alt="Viktor Mejlvang" width="400" height="400" loading="lazy" />
+                <img src="assets/team-viktor-placeholder.svg" alt="Viktor Mejlvang" width="400" height="400" loading="lazy" data-img-key="team-viktor" />
               </div>
               <div class="team-body">
                 <p class="team-role">Partner · Express &amp; temperaturstyret</p>
@@ -204,108 +210,42 @@
                 <ul class="team-strengths" aria-label="Forcer">
                   <li>Ekspresskørsler og dedikeret direkte transport</li>
                   <li>Temperaturstyrede forsendelser — køl, frys, pharma</li>
-                  <li>Særligt stærk i <strong>Østeuropa</strong>, <strong>Baltikum</strong> og <strong>Balkan</strong></li>
+                  <li>Landevej: særligt stærk i <strong>Østeuropa</strong>, <strong>Baltikum</strong> og <strong>Balkan</strong></li>
                 </ul>
                 <dl class="team-contact">
                   <dt>Direkte</dt>
-                  <dd><a href="tel:+4500000000">+45 00 00 00 00</a></dd>
+                  <dd><a href="tel:+4520341752">+45 20 34 17 52</a></dd>
                   <dt>E-mail</dt>
-                  <dd><a href="mailto:viktor@norspedition.dk">viktor@norspedition.dk</a></dd>
-                  <dt>Lokation</dt>
-                  <dd>Hirtshals</dd>
+                  <dd><a href="mailto:vm@norspedition.dk">vm@norspedition.dk</a></dd>
                 </dl>
               </div>
             </article>
 
             <article class="team-member">
               <div class="team-photo">
-                <img src="assets/team-victor-placeholder.svg" alt="Victor Vendelbo" width="400" height="400" loading="lazy" />
+                <img src="assets/team-victor-placeholder.svg" alt="Victor Vendelbo" width="400" height="400" loading="lazy" data-img-key="team-victor" />
               </div>
               <div class="team-body">
-                <p class="team-role">Partner · Sø, luft &amp; told</p>
+                <p class="team-role">Partner · Sø, rail &amp; luftfragt</p>
                 <h3 class="team-name">Victor Vendelbo</h3>
                 <p class="team-bio">
-                  Globalt sø- og luftfragtansvarlig med dyb indsigt i toldforhold og dokumentation. Koordinerer FCL/LCL, luftfragt og toldbehandling — så handovers mellem carriers, havne og myndigheder bliver glatte.
+                  Globalt ansvarlig for sø-, rail- og luftfragt samt toldforhold og dokumentation. Koordinerer FCL/LCL, intermodale togløsninger, luftfragt og toldbehandling — så handovers mellem carriers, havne, terminaler og myndigheder bliver glatte.
                 </p>
                 <ul class="team-strengths" aria-label="Forcer">
-                  <li>Sø- og luftfragt globalt — FCL, LCL, general og priority</li>
+                  <li>Sø, rail og luftfragt globalt — FCL, LCL, intermodal og priority</li>
                   <li>Toldforhold, klassificering og dokumentation</li>
-                  <li>Særligt stærk i <strong>Sydeuropa</strong>, <strong>Storbritannien</strong> og <strong>Mellemøsten</strong></li>
+                  <li>Landevej: særligt stærk i <strong>Sydeuropa</strong>, <strong>Storbritannien</strong> og <strong>Mellemøsten</strong></li>
                 </ul>
                 <dl class="team-contact">
                   <dt>Direkte</dt>
                   <dd><a href="tel:+4520976561">+45 20 97 65 61</a></dd>
                   <dt>E-mail</dt>
-                  <dd><a href="mailto:victor@norspedition.dk">victor@norspedition.dk</a></dd>
-                  <dt>Lokation</dt>
-                  <dd>København</dd>
+                  <dd><a href="mailto:vv@norspedition.dk">vv@norspedition.dk</a></dd>
                 </dl>
               </div>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section class="section" id="om" aria-labelledby="om-heading">
-        <div class="section-inner about-split">
-          <div>
-            <p class="section-label">Hvem er vi</p>
-            <h2 id="om-heading">Forudsigelighed <em>i en uforudsigelig verden.</em></h2>
-            <p class="section-intro">
-              NOR Spedition er et speditionsfirma med fokus på forudsigelighed og kommunikation. Du får en fast kontakt, og vi følger op, før du
-              behøver at spørge. Vi er forankret i Nordjylland og arbejder med en Nordic Spirit: ordentlighed, struktur og aftaler der holder.
-            </p>
-            <ul class="checklist">
-              <li>Klare aftaler om pris, tid og ansvar — skriftligt fra start.</li>
-              <li>Proaktiv opfølgning og ærlige ETA’er, også når planen ændrer sig.</li>
-              <li>Bredt netværk af carriers i Europa og globalt — vi finder kapaciteten.</li>
-              <li>Ét fast kontaktpunkt gennem hele forløbet.</li>
-            </ul>
-            <div class="hero-actions" aria-label="Genvej til transportformer">
-              <a class="btn btn-primary" href="#transportformer">Se transportformerne</a>
-              <a class="btn btn-outline" href="#team">Mød holdet</a>
-            </div>
-          </div>
-          <figure class="about-visual">
-            <img src="assets/office-placeholder.svg" alt="" width="800" height="600" loading="lazy" />
-          </figure>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="kontakt" aria-labelledby="kontakt-heading">
-        <div class="section-inner contact-block">
-          <div>
-            <p class="section-label">Kontakt</p>
-            <h2 id="kontakt-heading">Lad os <em>få det flyttet.</em></h2>
-            <p class="section-intro">
-              Ring eller skriv. Hvis du sender få oplysninger (hvad, hvorfra, hvortil og hvornår), vender vi hurtigt tilbage med en konkret plan og pris.
-            </p>
-            <div class="hero-actions" aria-label="Kontakt handlinger">
-              <a class="btn btn-primary" href="mailto:kontakt@norspedition.dk">Skriv en e-mail</a>
-              <a class="btn btn-outline" href="tel:+4520976561">Ring</a>
-            </div>
-          </div>
-          <div class="contact-details">
-            <dl>
-              <dt>Telefon</dt>
-              <dd><a href="tel:+4520976561">+45 20 97 65 61</a></dd>
-              <dt>E-mail</dt>
-              <dd><a href="mailto:kontakt@norspedition.dk">kontakt@norspedition.dk</a></dd>
-              <dt>CVR</dt>
-              <dd>TBA</dd>
-            </dl>
-
-            <div class="contact-addresses" aria-label="Adresser">
-              <div class="contact-card">
-                <h3>Hirtshals</h3>
-                <p><strong>NOR Spedition ApS</strong><br />Vodbindervej 2<br />9850 Hirtshals<br />Danmark</p>
-              </div>
-              <div class="contact-card">
-                <h3>København</h3>
-                <p><strong>NOR Spedition ApS</strong><br />Eskildsgade 14.2<br />1657 København V<br />Danmark</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </main>
@@ -331,20 +271,181 @@
         <div class="modal-equipment-block">
           <h3 class="modal-subtitle">Materieltyper vi arbejder med</h3>
           <p class="modal-equipment-intro" id="modal-equipment-intro"></p>
+          <p class="modal-equipment-hint">Klik på en materieltype for detaljer og visualisering.</p>
           <ul class="equipment-grid" id="modal-equipment"></ul>
         </div>
 
         <div class="hero-actions" aria-label="Modal handlinger">
-          <a class="btn btn-primary" href="#kontakt" data-modal-close>Kontakt os om denne løsning</a>
-          <a class="btn btn-outline" href="transportformer.html">Læs mere om alle former</a>
+          <a class="btn btn-primary" href="mailto:contact@norspedition.dk" data-modal-close>Kontakt os om denne løsning</a>
+          <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
         </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--equipment" id="equipment-modal" aria-labelledby="equipment-title">
+      <div class="modal-inner">
+        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
+        <p class="section-label" id="equipment-kicker">Materieltype</p>
+        <h2 id="equipment-title">Titel</h2>
+        <p class="section-intro" id="equipment-lead"></p>
+
+        <div class="equipment-layout">
+          <figure class="equipment-figure">
+            <img id="equipment-image" src="assets/card-placeholder.svg" alt="" width="1200" height="675" data-img-key="equipment-default" />
+            <figcaption id="equipment-caption"></figcaption>
+          </figure>
+          <div class="equipment-detail">
+            <h3 class="modal-subtitle">Specifikationer</h3>
+            <dl class="equipment-specs-list" id="equipment-specs-list"></dl>
+
+            <h3 class="modal-subtitle">Velegnet til</h3>
+            <ul class="modal-list modal-list--pros" id="equipment-good"></ul>
+
+            <h3 class="modal-subtitle">Vær opmærksom på</h3>
+            <ul class="modal-list modal-list--cons" id="equipment-notes"></ul>
+          </div>
+        </div>
+
+        <div class="hero-actions" aria-label="Equipment handlinger">
+          <button class="btn btn-outline" type="button" data-equipment-back>← Tilbage til transportform</button>
+          <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--quote" id="quote-modal" aria-labelledby="quote-title">
+      <div class="modal-inner">
+        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
+        <p class="section-label">Tilbud</p>
+        <h2 id="quote-title">Spørg <em>på pris.</em></h2>
+        <p class="section-intro">
+          For at modtage et individuelt tilbud på transport, udfyld formularen herunder. På baggrund af oplysningerne vender vi tilbage med et forslag tilpasset godstype, rute og ønsket leveringsdato.
+        </p>
+
+        <form class="quote-form" id="quote-form" novalidate>
+          <!-- Replace action URL with your form endpoint (Formspree/Basin/Getform/Netlify) — see admin.html for guide -->
+          <fieldset class="quote-fieldset">
+            <legend>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+              Kontaktoplysninger
+            </legend>
+            <div class="form-grid">
+              <label>
+                <span>Navn</span>
+                <input type="text" name="name" autocomplete="name" placeholder="Fornavn og efternavn" required />
+              </label>
+              <label>
+                <span>Firma</span>
+                <input type="text" name="company" autocomplete="organization" placeholder="Firmanavn" />
+              </label>
+              <label>
+                <span>E-mail</span>
+                <input type="email" name="email" autocomplete="email" placeholder="dig@firma.dk" required />
+              </label>
+              <label>
+                <span>Telefon</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+45 12 34 56 78" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18l-2 12H5L3 7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>
+              Transportform
+            </legend>
+            <div class="radio-grid" role="radiogroup" aria-label="Transportform">
+              <label class="radio-card">
+                <input type="radio" name="transport" value="Landevej" required />
+                <span class="radio-card-title">Landevej</span>
+                <span class="radio-card-sub">Road · LTL/FTL/special</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="transport" value="Sø" />
+                <span class="radio-card-title">Sø</span>
+                <span class="radio-card-sub">Sea · FCL/LCL/reefer</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="transport" value="Luft" />
+                <span class="radio-card-title">Luft</span>
+                <span class="radio-card-sub">Air · general/priority/charter</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="transport" value="Rail" />
+                <span class="radio-card-title">Rail</span>
+                <span class="radio-card-sub">Intermodal/korridor</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+              Gods
+            </legend>
+            <div class="form-grid">
+              <label>
+                <span>Mål (LxBxH)</span>
+                <input type="text" name="dimensions" placeholder="fx 120×80×100 cm" />
+              </label>
+              <label>
+                <span>Vægt</span>
+                <input type="text" name="weight" placeholder="fx 500 kg" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              Afhentning &amp; levering
+            </legend>
+            <div class="form-grid form-grid-2x2">
+              <label>
+                <span>Afhentning (postnr. + by)</span>
+                <input type="text" name="loadingPlace" placeholder="fx 9850 Hirtshals" />
+              </label>
+              <label>
+                <span>Leveringssted (postnr. + by)</span>
+                <input type="text" name="unloadingPlace" placeholder="fx 1657 København V" />
+              </label>
+              <label>
+                <span>Dato for afhentning</span>
+                <input type="date" name="loadingDate" />
+              </label>
+              <label>
+                <span>Dato for levering</span>
+                <input type="date" name="unloadingDate" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+              Yderligere oplysninger
+            </legend>
+            <label class="full">
+              <span>Beskriv gerne godstypen, særlige krav eller deadlines</span>
+              <textarea name="notes" rows="4" placeholder="Fx temperaturstyret, farligt gods, kranløft ved levering…"></textarea>
+            </label>
+          </fieldset>
+
+          <p class="form-status" id="quote-status" aria-live="polite"></p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="submit">Send forespørgsel</button>
+            <button class="btn btn-outline" type="button" data-modal-close>Annuller</button>
+          </div>
+          <p class="form-foot">Vi svarer typisk inden for få arbejdstimer. Forespørgslen sendes til <a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a>.</p>
+        </form>
       </div>
     </dialog>
 
     <footer class="site-footer" aria-label="Footer">
       <div class="footer-inner footer-grid">
         <div class="footer-brand">
-          <img class="footer-logo" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" loading="lazy" />
+          <img class="footer-logo" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="1024" height="576" loading="lazy" data-img-key="logo" />
           <p class="footer-subtitle">
             Vi hedder NOR Spedition, fordi vi er forankret i Nordjylland — og fordi vi arbejder med en Nordic Spirit: ordentlighed, struktur og aftaler
             der holder.
@@ -373,8 +474,9 @@
           <nav class="footer-links" aria-label="Links">
             <a href="#top">Til toppen</a>
             <a href="#team">Team</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="mailto:contact@norspedition.dk">Kontakt</a>
             <a href="transportformer.html">Transportformer</a>
+            <a href="admin.html">Admin</a>
           </nav>
         </div>
       </div>

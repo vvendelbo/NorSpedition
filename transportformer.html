@@ -27,9 +27,9 @@
         </button>
         <div class="header-right">
           <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
-            <a href="index.html#om">Om</a>
+            <a href="index.html#team">Team</a>
             <a href="transportformer.html" aria-current="page">Transportformer</a>
-            <a href="index.html#kontakt">Kontakt</a>
+            <a href="mailto:contact@norspedition.dk">Kontakt</a>
           </nav>
         </div>
       </div>
@@ -42,7 +42,8 @@
           <h1 id="hero-heading">Transportformer</h1>
           <p class="hero-lead">Et overblik over de transportformer vi typisk hjælper med.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="index.html#kontakt">Kontakt os</a>
+            <a class="btn btn-primary" href="mailto:contact@norspedition.dk">Kontakt os</a>
+            <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
             <a class="btn btn-outline" href="index.html">Til forsiden</a>
           </div>
         </div>
@@ -140,10 +141,74 @@
         <p>© <span id="year"></span> NOR Spedition</p>
         <nav class="footer-links" aria-label="Footer">
           <a href="#top">Til toppen</a>
-          <a href="index.html#kontakt">Kontakt</a>
+          <a href="mailto:contact@norspedition.dk">Kontakt</a>
         </nav>
       </div>
     </footer>
+
+    <dialog class="modal modal--quote" id="quote-modal" aria-labelledby="quote-title">
+      <div class="modal-inner">
+        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
+        <p class="section-label">Tilbud</p>
+        <h2 id="quote-title">Spørg <em>på pris.</em></h2>
+        <p class="section-intro">
+          Udfyld formularen — vi vender tilbage med et tilbud tilpasset godstype, rute og ønsket leveringsdato.
+        </p>
+
+        <form class="quote-form" id="quote-form" novalidate>
+          <fieldset class="quote-fieldset">
+            <legend>Kontaktoplysninger</legend>
+            <div class="form-grid">
+              <label><span>Navn</span><input type="text" name="name" autocomplete="name" placeholder="Fornavn og efternavn" required /></label>
+              <label><span>Firma</span><input type="text" name="company" autocomplete="organization" placeholder="Firmanavn" /></label>
+              <label><span>E-mail</span><input type="email" name="email" autocomplete="email" placeholder="dig@firma.dk" required /></label>
+              <label><span>Telefon</span><input type="tel" name="phone" autocomplete="tel" placeholder="+45 12 34 56 78" /></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>Transportform</legend>
+            <div class="radio-grid" role="radiogroup" aria-label="Transportform">
+              <label class="radio-card"><input type="radio" name="transport" value="Landevej" required /><span class="radio-card-title">Landevej</span><span class="radio-card-sub">Road</span></label>
+              <label class="radio-card"><input type="radio" name="transport" value="Sø" /><span class="radio-card-title">Sø</span><span class="radio-card-sub">Sea</span></label>
+              <label class="radio-card"><input type="radio" name="transport" value="Luft" /><span class="radio-card-title">Luft</span><span class="radio-card-sub">Air</span></label>
+              <label class="radio-card"><input type="radio" name="transport" value="Rail" /><span class="radio-card-title">Rail</span><span class="radio-card-sub">Intermodal</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>Gods</legend>
+            <div class="form-grid">
+              <label><span>Mål (LxBxH)</span><input type="text" name="dimensions" placeholder="fx 120×80×100 cm" /></label>
+              <label><span>Vægt</span><input type="text" name="weight" placeholder="fx 500 kg" /></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>Afhentning &amp; levering</legend>
+            <div class="form-grid form-grid-2x2">
+              <label><span>Afhentning (postnr. + by)</span><input type="text" name="loadingPlace" placeholder="fx 9850 Hirtshals" /></label>
+              <label><span>Leveringssted (postnr. + by)</span><input type="text" name="unloadingPlace" placeholder="fx 1657 København V" /></label>
+              <label><span>Dato for afhentning</span><input type="date" name="loadingDate" /></label>
+              <label><span>Dato for levering</span><input type="date" name="unloadingDate" /></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quote-fieldset">
+            <legend>Yderligere oplysninger</legend>
+            <label class="full"><span>Beskriv gerne godstypen, særlige krav eller deadlines</span><textarea name="notes" rows="4" placeholder="Fx temperaturstyret, farligt gods, kranløft ved levering…"></textarea></label>
+          </fieldset>
+
+          <p class="form-status" id="quote-status" aria-live="polite"></p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="submit">Send forespørgsel</button>
+            <button class="btn btn-outline" type="button" data-modal-close>Annuller</button>
+          </div>
+          <p class="form-foot">Forespørgslen sendes til <a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a>.</p>
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>
 
