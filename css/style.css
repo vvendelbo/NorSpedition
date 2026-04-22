@@ -1293,7 +1293,7 @@ body.hints-dismissed .click-hint-floater {
 .team-body {
   padding: var(--space-md) var(--space-md) var(--space-lg);
   display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-rows: auto auto 1fr auto;
   gap: 0.55rem;
 }
 
@@ -1533,8 +1533,13 @@ body.hints-dismissed .click-hint-floater {
 }
 
 /* Equipment detail modal */
-.modal--equipment .modal-inner {
+.modal.modal--equipment {
   width: min(1040px, calc(100vw - 2rem));
+  overflow-x: clip;
+}
+
+.modal--equipment .modal-inner {
+  width: 100%;
 }
 
 .equipment-layout {
@@ -1542,6 +1547,21 @@ body.hints-dismissed .click-hint-floater {
   grid-template-columns: 1.1fr 1fr;
   gap: var(--space-lg);
   margin: 1rem 0 1.25rem;
+  max-width: 100%;
+}
+
+/* Prevent horizontal scroll in equipment modal on long strings */
+.equipment-layout > * {
+  min-width: 0;
+}
+
+.modal--equipment #equipment-title,
+.modal--equipment #equipment-lead,
+.modal--equipment .equipment-figure figcaption,
+.modal--equipment .equipment-specs-list dd,
+.modal--equipment .modal-list li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .equipment-figure {
@@ -1549,10 +1569,12 @@ body.hints-dismissed .click-hint-floater {
   background: #f6f7f9;
   border: 1px solid var(--color-border);
   overflow: hidden;
+  max-width: 100%;
 }
 
 .equipment-figure img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
@@ -1577,7 +1599,7 @@ body.hints-dismissed .click-hint-floater {
 
 .equipment-specs-list {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: minmax(0, 14ch) minmax(0, 1fr);
   column-gap: 1rem;
   row-gap: 0.35rem;
   margin: 0 0 var(--space-sm);
@@ -1591,11 +1613,13 @@ body.hints-dismissed .click-hint-floater {
   text-transform: uppercase;
   color: var(--color-ink-muted);
   align-self: center;
+  min-width: 0;
 }
 
 .equipment-specs-list dd {
   margin: 0;
   color: var(--color-ink);
+  min-width: 0;
 }
 
 /* Quote form modal */
@@ -1967,6 +1991,7 @@ body.hints-dismissed .click-hint-floater {
 .modal-inner {
   max-height: calc(100vh - 3rem);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Mobile */
