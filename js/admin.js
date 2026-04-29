@@ -1,7 +1,77 @@
-(() => {
+// NOTE: This is a lightweight frontend-only gate for a static site.
+// It deters casual access but is not equivalent to server-side auth.
+(async () => {
   const IMG_STORAGE_KEY = "nor-spedition.image-overrides.v1";
   const ENDPOINT_KEY = "nor-spedition.form-endpoint";
   const MAX_DATAURL_BYTES = 2_500_000; // ~2.5 MB — safe ceiling for localStorage
+  const ADMIN_AUTH_KEY = "nor-spedition.admin-auth.v1";
+  const ADMIN_PASSWORD_SHA256_HEX = "5ff9e8275cb3ebd51f92460c91c174fa0d6107ebd1238b26cead823bfa1673c3"; // "nor-admin-2026"
+
+  async function sha256Hex(str) {
+    const data = new TextEncoder().encode(str);
+    const digest = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(digest))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  async function requireAdminPassword() {
+    try {
+      if (sessionStorage.getItem(ADMIN_AUTH_KEY) === "1") return true;
+    } catch {
+      // ignore
+    }
+
+    document.body.classList.add("admin-locked");
+
+    const lockEl = document.getElementById("admin-lock");
+    const form = document.getElementById("admin-lock-form");
+    const input = document.getElementById("admin-password");
+    const statusEl = document.getElementById("admin-lock-status");
+
+    if (!(lockEl instanceof HTMLElement) || !(form instanceof HTMLFormElement) || !(input instanceof HTMLInputElement)) {
+      return false;
+    }
+
+    lockEl.hidden = false;
+    queueMicrotask(() => input.focus());
+
+    const setStatus = (msg, tone) => {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      statusEl.dataset.tone = tone || "";
+    };
+
+    return await new Promise((resolve) => {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const pw = input.value || "";
+        if (!pw) return;
+        try {
+          const hex = await sha256Hex(pw);
+          if (hex !== ADMIN_PASSWORD_SHA256_HEX) {
+            setStatus("Forkert password. Prøv igen.", "warn");
+            input.select();
+            return;
+          }
+          try {
+            sessionStorage.setItem(ADMIN_AUTH_KEY, "1");
+          } catch {
+            // ignore
+          }
+          lockEl.hidden = true;
+          document.body.classList.remove("admin-locked");
+          resolve(true);
+        } catch {
+          setStatus("Kunne ikke validere password i denne browser.", "warn");
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  const authed = await requireAdminPassword();
+  if (!authed) return;
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());

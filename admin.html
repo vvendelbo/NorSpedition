@@ -16,6 +16,25 @@
     <script src="js/admin.js" defer></script>
   </head>
   <body class="admin-body">
+    <div class="admin-lock" id="admin-lock" hidden>
+      <div class="admin-lock-card" role="dialog" aria-modal="true" aria-labelledby="admin-lock-title">
+        <p class="section-label">Admin</p>
+        <h1 id="admin-lock-title">Indtast adgangskode</h1>
+        <p class="section-intro">
+          Denne side er låst. Indtast password for at fortsætte.
+        </p>
+
+        <form class="admin-lock-form" id="admin-lock-form">
+          <label class="admin-lock-label" for="admin-password">
+            <span>Password</span>
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Lås op</button>
+          <p class="form-status" id="admin-lock-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="NOR Spedition">
