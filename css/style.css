@@ -1719,6 +1719,7 @@ body.hints-dismissed .click-hint-floater {
 
 .modal--equipment .modal-inner {
   width: 100%;
+  text-align: center;
 }
 
 .equipment-layout {
@@ -1727,6 +1728,7 @@ body.hints-dismissed .click-hint-floater {
   gap: var(--space-lg);
   margin: 1rem 0 1.25rem;
   max-width: 100%;
+  justify-items: center;
 }
 
 /* Prevent horizontal scroll in equipment modal on long strings */
@@ -1749,6 +1751,27 @@ body.hints-dismissed .click-hint-floater {
   border: 1px solid var(--color-border);
   overflow: hidden;
   max-width: 100%;
+}
+
+/* Hide image placeholders (keep markup for later) */
+.modal--equipment .equipment-figure {
+  display: none;
+}
+
+.modal--equipment .equipment-layout {
+  grid-template-columns: 1fr;
+}
+
+.modal--equipment .equipment-detail {
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+.modal--equipment .equipment-detail dl,
+.modal--equipment .equipment-detail ul {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .equipment-figure img {

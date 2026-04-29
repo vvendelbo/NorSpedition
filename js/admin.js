@@ -143,7 +143,7 @@
 
     { key: "team-mathias-anon", title: "Portræt: Kommende kollega (anonymt)", desc: "Anonymt/neutral billede (kvadratisk, fx 800×800). Vises indtil nedtællingen er slut.", default: "assets/team-mathias-anon.png" },
     { key: "team-mathias", title: "Portræt: Kommende kollega (offentlig)", desc: "Rigtigt portræt (kvadratisk, fx 800×800). Vises når nedtællingen er slut.", default: "assets/team-mathias-placeholder.svg" },
-    { key: "team-viktor", title: "Portræt: Viktor Mejlvang", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-viktor-placeholder.svg" },
+    { key: "team-viktor", title: "Portræt: Viktor Mejlvang", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-viktor.png" },
     { key: "team-victor", title: "Portræt: Victor Vendelbo", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-victor-placeholder.svg" },
 
     { key: "equipment-default", title: "Default for materiel-visualisering", desc: "Fallback-billede der vises når et specifikt materiel-id ikke har eget billede.", default: "assets/card-placeholder.svg" },
