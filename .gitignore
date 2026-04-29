@@ -1,0 +1,5 @@
+# Local/admin exports (can become huge if they embed base64 images)
+assets/site-overrides.json
+
+# macOS
+.DS_Store

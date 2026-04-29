@@ -136,10 +136,10 @@
     { key: "keypoint-struktur", title: "Keypoint: Struktur", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
     { key: "keypoint-netvaerk", title: "Keypoint: Netværk", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
 
-    { key: "transport-road", title: "Transportkort: Landevej", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
-    { key: "transport-sea", title: "Transportkort: Sø", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
-    { key: "transport-air", title: "Transportkort: Luft", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
-    { key: "transport-rail", title: "Transportkort: Rail", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
+    { key: "transport-road", title: "Transportkort: Landevej", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-road.webp" },
+    { key: "transport-sea", title: "Transportkort: Sø", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-sea.webp" },
+    { key: "transport-air", title: "Transportkort: Luft", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-air.webp" },
+    { key: "transport-rail", title: "Transportkort: Rail", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-rail.webp" },
 
     { key: "team-mathias-anon", title: "Portræt: Kommende kollega (anonymt)", desc: "Anonymt/neutral billede (kvadratisk, fx 800×800). Vises indtil nedtællingen er slut.", default: "assets/team-mathias-anon-placeholder.svg" },
     { key: "team-mathias", title: "Portræt: Kommende kollega (offentlig)", desc: "Rigtigt portræt (kvadratisk, fx 800×800). Vises når nedtællingen er slut.", default: "assets/team-mathias-placeholder.svg" },
