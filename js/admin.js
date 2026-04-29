@@ -3,12 +3,60 @@
 (async () => {
   const IMG_STORAGE_KEY = "nor-spedition.image-overrides.v1";
   const ENDPOINT_KEY = "nor-spedition.form-endpoint";
-  // Soft limit to avoid blowing up browser storage.
-  // Note: localStorage has a hard quota (often ~5MB per origin), and data: URLs are larger than the original file.
-  // This limit is only a pre-check; the real save can still fail with "localStorage is full".
-  const MAX_DATAURL_BYTES = 15_000_000; // ~15 MB (dataURL chars) — allows larger uploads, still quota-limited
+  const IDB_DB_NAME = "nor-spedition";
+  const IDB_STORE = "images";
+  const IDB_PREFIX = "idb:"; // stored in localStorage mapping as a lightweight pointer
+
+  // Soft limit for conversion-to-dataURL exports (JSON export can get huge).
+  // IndexedDB can store larger blobs, but exporting extremely large base64 JSON isn't very practical.
+  const MAX_EXPORT_DATAURL_BYTES = 25_000_000; // ~25 MB (dataURL chars)
   const ADMIN_AUTH_KEY = "nor-spedition.admin-auth.v1";
   const ADMIN_PASSWORD_SHA256_HEX = "5ff9e8275cb3ebd51f92460c91c174fa0d6107ebd1238b26cead823bfa1673c3"; // "nor-admin-2026"
+
+  let dbPromise = null;
+  function openDb() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(IDB_DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    return dbPromise;
+  }
+
+  async function idbSet(key, blob) {
+    const db = await openDb();
+    return await new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error);
+      tx.objectStore(IDB_STORE).put(blob, key);
+    });
+  }
+
+  async function idbGet(key) {
+    const db = await openDb();
+    return await new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readonly");
+      const req = tx.objectStore(IDB_STORE).get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function idbDel(key) {
+    const db = await openDb();
+    return await new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error);
+      tx.objectStore(IDB_STORE).delete(key);
+    });
+  }
 
   async function sha256Hex(str) {
     const data = new TextEncoder().encode(str);
@@ -161,11 +209,21 @@
     });
   }
 
+  function blobToDataURL(blob) {
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(String(r.result));
+      r.onerror = reject;
+      r.readAsDataURL(blob);
+    });
+  }
+
   const grid = document.getElementById("admin-grid");
   const tpl = document.getElementById("admin-slot-template");
   if (!(grid instanceof HTMLElement) || !(tpl instanceof HTMLTemplateElement)) return;
 
   const slotNodes = new Map();
+  const slotObjectUrls = new Map();
 
   function renderSlot(slot) {
     const node = tpl.content.firstElementChild.cloneNode(true);
@@ -180,10 +238,26 @@
     descEl.textContent = slot.desc;
     keyEl.textContent = slot.key;
 
-    const overrides = loadOverrides();
-    const current = overrides[slot.key] || slot.default;
-    img.src = current;
     img.alt = slot.title;
+
+    async function refreshPreview() {
+      const overrides = loadOverrides();
+      const current = overrides[slot.key] || "";
+      const prevUrl = slotObjectUrls.get(slot.key);
+      if (prevUrl) URL.revokeObjectURL(prevUrl);
+
+      if (typeof current === "string" && current.startsWith(IDB_PREFIX)) {
+        const blob = await idbGet(slot.key);
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          slotObjectUrls.set(slot.key, url);
+          img.src = url;
+          return;
+        }
+      }
+      img.src = current || slot.default;
+    }
+    refreshPreview();
 
     fileInput.addEventListener("change", async (e) => {
       const f = e.target && e.target.files && e.target.files[0];
@@ -193,23 +267,16 @@
         return;
       }
       try {
-        const dataUrl = await fileToDataURL(f);
-        if (dataUrl.length > MAX_DATAURL_BYTES) {
-          setStatus(
-            `Billedet er for stort (${Math.round(dataUrl.length / 1024)} KB) til adminens grænse. Prøv at komprimere eller skalere ned.`,
-            "warn",
-          );
+        try {
+          await idbSet(slot.key, f);
+        } catch {
+          setStatus("Kunne ikke gemme billedet i browserens storage (IndexedDB).", "warn");
           return;
         }
         const all = loadOverrides();
-        all[slot.key] = dataUrl;
-        try {
-          saveOverrides(all);
-        } catch {
-          setStatus("Browserens localStorage er fuld. Nulstil nogle billeder eller brug mindre filer.", "warn");
-          return;
-        }
-        img.src = dataUrl;
+        all[slot.key] = `${IDB_PREFIX}${slot.key}`;
+        saveOverrides(all);
+        await refreshPreview();
         setStatus(`“${slot.title}” opdateret.`, "success");
       } catch {
         setStatus("Kunne ikke læse filen.", "warn");
@@ -223,6 +290,7 @@
         delete all[slot.key];
         saveOverrides(all);
       }
+      idbDel(slot.key).catch(() => {});
       img.src = slot.default;
       setStatus(`“${slot.title}” nulstillet.`, "success");
     });
@@ -244,37 +312,67 @@
   });
 
   document.getElementById("export-btn").addEventListener("click", () => {
-    const payload = {
-      images: loadOverrides(),
-      formEndpoint: localStorage.getItem(ENDPOINT_KEY) || "",
-      exportedAt: new Date().toISOString(),
-      version: 1,
-    };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `nor-spedition-admin-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    setStatus("Indstillinger eksporteret.", "success");
+    (async () => {
+      const images = loadOverrides();
+      for (const [k, v] of Object.entries(images)) {
+        if (typeof v === "string" && v.startsWith(IDB_PREFIX)) {
+          const blob = await idbGet(k);
+          if (!blob) continue;
+          const dataUrl = await blobToDataURL(blob);
+          if (dataUrl.length > MAX_EXPORT_DATAURL_BYTES) {
+            setStatus(`“${k}” er meget stor til eksport (JSON). Komprimér billedet før eksport.`, "warn");
+            return;
+          }
+          images[k] = dataUrl;
+        }
+      }
+      const payload = {
+        images,
+        formEndpoint: localStorage.getItem(ENDPOINT_KEY) || "",
+        exportedAt: new Date().toISOString(),
+        version: 1,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `nor-spedition-admin-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      setStatus("Indstillinger eksporteret.", "success");
+    })().catch(() => setStatus("Kunne ikke eksportere indstillinger.", "warn"));
   });
 
   // Export file meant to be deployed with the static site (picked up by js/site.js)
   document.getElementById("export-hosted-btn").addEventListener("click", () => {
-    const payload = {
-      images: loadOverrides(),
-      exportedAt: new Date().toISOString(),
-      version: 1,
-    };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "site-overrides.json";
-    a.click();
-    URL.revokeObjectURL(url);
-    setStatus("Eksporteret: upload 'assets/site-overrides.json' sammen med sitet.", "success");
+    (async () => {
+      const images = loadOverrides();
+      for (const [k, v] of Object.entries(images)) {
+        if (typeof v === "string" && v.startsWith(IDB_PREFIX)) {
+          const blob = await idbGet(k);
+          if (!blob) continue;
+          const dataUrl = await blobToDataURL(blob);
+          if (dataUrl.length > MAX_EXPORT_DATAURL_BYTES) {
+            setStatus(`“${k}” er meget stor til eksport (JSON). Komprimér billedet før eksport.`, "warn");
+            return;
+          }
+          images[k] = dataUrl;
+        }
+      }
+      const payload = {
+        images,
+        exportedAt: new Date().toISOString(),
+        version: 1,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "site-overrides.json";
+      a.click();
+      URL.revokeObjectURL(url);
+      setStatus("Eksporteret: upload 'assets/site-overrides.json' sammen med sitet.", "success");
+    })().catch(() => setStatus("Kunne ikke eksportere til hosting.", "warn"));
   });
 
   document.getElementById("import-file").addEventListener("change", async (e) => {

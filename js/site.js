@@ -5,8 +5,12 @@
   // - hosted (for all visitors): optional static JSON at assets/site-overrides.json
   // ===================================================================
   const IMG_STORAGE_KEY = "nor-spedition.image-overrides.v1";
+  const IDB_DB_NAME = "nor-spedition";
+  const IDB_STORE = "images";
+  const IDB_PREFIX = "idb:";
 
   let publishedOverrides = {};
+  const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
     try {
@@ -19,6 +23,31 @@
     } catch {
       return {};
     }
+  }
+
+  let dbPromise = null;
+  function openDb() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(IDB_DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    return dbPromise;
+  }
+
+  async function idbGet(key) {
+    const db = await openDb();
+    return await new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readonly");
+      const req = tx.objectStore(IDB_STORE).get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => reject(req.error);
+    });
   }
 
   function loadLocalOverrides() {
@@ -34,15 +63,35 @@
     return { ...publishedOverrides, ...loadLocalOverrides() };
   }
 
-  function applyImageOverrides() {
+  async function resolveOverrideUrl(key, value) {
+    if (typeof value !== "string") return null;
+    if (!value) return null;
+    if (!value.startsWith(IDB_PREFIX)) return value;
+
+    if (objectUrlCache.has(key)) return objectUrlCache.get(key);
+    try {
+      const blob = await idbGet(key);
+      if (!blob) return null;
+      const url = URL.createObjectURL(blob);
+      objectUrlCache.set(key, url);
+      return url;
+    } catch {
+      return null;
+    }
+  }
+
+  async function applyImageOverrides() {
     const overrides = getEffectiveOverrides();
     if (!overrides || typeof overrides !== "object") return;
-    document.querySelectorAll("img[data-img-key]").forEach((el) => {
+    const imgs = Array.from(document.querySelectorAll("img[data-img-key]"));
+    await Promise.all(imgs.map(async (el) => {
       const key = el.getAttribute("data-img-key");
-      if (key && overrides[key]) {
-        if (el instanceof HTMLImageElement) el.src = overrides[key];
-      }
-    });
+      if (!key) return;
+      const v = overrides[key];
+      if (!v) return;
+      const url = await resolveOverrideUrl(key, v);
+      if (url && el instanceof HTMLImageElement) el.src = url;
+    }));
   }
 
   // Apply overrides ASAP, then re-apply when published overrides load
@@ -733,7 +782,14 @@
       if (imageEl instanceof HTMLImageElement) {
         imageEl.setAttribute("data-img-key", imgKey);
         const overrides = getEffectiveOverrides();
-        imageEl.src = overrides[imgKey] || "assets/card-placeholder.svg";
+        const raw = overrides[imgKey];
+        if (raw) {
+          resolveOverrideUrl(imgKey, raw).then((url) => {
+            imageEl.src = url || "assets/card-placeholder.svg";
+          });
+        } else {
+          imageEl.src = "assets/card-placeholder.svg";
+        }
         imageEl.alt = data.name;
       }
       if (captionEl) captionEl.textContent = `${data._transportTitle} · ${data.name}`;
