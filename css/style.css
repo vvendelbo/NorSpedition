@@ -888,7 +888,7 @@ body.hints-dismissed .click-hint-floater {
 .team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -1300,7 +1300,7 @@ body.hints-dismissed .click-hint-floater {
 .team-member .team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   transition: transform 0.35s ease;
 }
@@ -1455,7 +1455,7 @@ body.hints-dismissed .click-hint-floater {
 .team-photo-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   border-radius: inherit;
   display: block;
