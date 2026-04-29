@@ -136,7 +136,7 @@
     { key: "keypoint-struktur", title: "Keypoint: Struktur", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
     { key: "keypoint-netvaerk", title: "Keypoint: Netværk", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
 
-    { key: "transport-road", title: "Transportkort: Landevej", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-road.webp" },
+    { key: "transport-road", title: "Transportkort: Landevej", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-road.png" },
     { key: "transport-sea", title: "Transportkort: Sø", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-sea.webp" },
     { key: "transport-air", title: "Transportkort: Luft", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-air.webp" },
     { key: "transport-rail", title: "Transportkort: Rail", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-rail.webp" },
