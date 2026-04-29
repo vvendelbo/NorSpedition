@@ -1,17 +1,41 @@
 (() => {
   // ===================================================================
-  // Image overrides via admin portal (localStorage)
+  // Image overrides
+  // - local (admin portal): localStorage
+  // - hosted (for all visitors): optional static JSON at assets/site-overrides.json
   // ===================================================================
   const IMG_STORAGE_KEY = "nor-spedition.image-overrides.v1";
-  function loadImageOverrides() {
+
+  let publishedOverrides = {};
+
+  async function loadPublishedOverrides() {
+    try {
+      const res = await fetch("assets/site-overrides.json", { cache: "no-store" });
+      if (!res.ok) return {};
+      const json = await res.json();
+      if (!json || typeof json !== "object") return {};
+      const images = json.images && typeof json.images === "object" ? json.images : {};
+      return images;
+    } catch {
+      return {};
+    }
+  }
+
+  function loadLocalOverrides() {
     try {
       return JSON.parse(localStorage.getItem(IMG_STORAGE_KEY) || "{}");
     } catch {
       return {};
     }
   }
+
+  function getEffectiveOverrides() {
+    // Local overrides win, so admin can still test locally without re-deploy
+    return { ...publishedOverrides, ...loadLocalOverrides() };
+  }
+
   function applyImageOverrides() {
-    const overrides = loadImageOverrides();
+    const overrides = getEffectiveOverrides();
     if (!overrides || typeof overrides !== "object") return;
     document.querySelectorAll("img[data-img-key]").forEach((el) => {
       const key = el.getAttribute("data-img-key");
@@ -20,7 +44,13 @@
       }
     });
   }
+
+  // Apply overrides ASAP, then re-apply when published overrides load
   applyImageOverrides();
+  (async () => {
+    publishedOverrides = await loadPublishedOverrides();
+    applyImageOverrides();
+  })();
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -702,7 +732,7 @@
       const imgKey = `equipment-${data.id}`;
       if (imageEl instanceof HTMLImageElement) {
         imageEl.setAttribute("data-img-key", imgKey);
-        const overrides = loadImageOverrides();
+        const overrides = getEffectiveOverrides();
         imageEl.src = overrides[imgKey] || "assets/card-placeholder.svg";
         imageEl.alt = data.name;
       }

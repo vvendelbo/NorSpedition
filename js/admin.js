@@ -3,7 +3,10 @@
 (async () => {
   const IMG_STORAGE_KEY = "nor-spedition.image-overrides.v1";
   const ENDPOINT_KEY = "nor-spedition.form-endpoint";
-  const MAX_DATAURL_BYTES = 2_500_000; // ~2.5 MB — safe ceiling for localStorage
+  // Soft limit to avoid blowing up browser storage.
+  // Note: localStorage has a hard quota (often ~5MB per origin), and data: URLs are larger than the original file.
+  // This limit is only a pre-check; the real save can still fail with "localStorage is full".
+  const MAX_DATAURL_BYTES = 15_000_000; // ~15 MB (dataURL chars) — allows larger uploads, still quota-limited
   const ADMIN_AUTH_KEY = "nor-spedition.admin-auth.v1";
   const ADMIN_PASSWORD_SHA256_HEX = "5ff9e8275cb3ebd51f92460c91c174fa0d6107ebd1238b26cead823bfa1673c3"; // "nor-admin-2026"
 
@@ -192,7 +195,10 @@
       try {
         const dataUrl = await fileToDataURL(f);
         if (dataUrl.length > MAX_DATAURL_BYTES) {
-          setStatus(`Billedet er for stort (${Math.round(dataUrl.length / 1024)} KB). Prøv at komprimere eller skalere ned.`, "warn");
+          setStatus(
+            `Billedet er for stort (${Math.round(dataUrl.length / 1024)} KB) til adminens grænse. Prøv at komprimere eller skalere ned.`,
+            "warn",
+          );
           return;
         }
         const all = loadOverrides();
@@ -252,6 +258,23 @@
     a.click();
     URL.revokeObjectURL(url);
     setStatus("Indstillinger eksporteret.", "success");
+  });
+
+  // Export file meant to be deployed with the static site (picked up by js/site.js)
+  document.getElementById("export-hosted-btn").addEventListener("click", () => {
+    const payload = {
+      images: loadOverrides(),
+      exportedAt: new Date().toISOString(),
+      version: 1,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "site-overrides.json";
+    a.click();
+    URL.revokeObjectURL(url);
+    setStatus("Eksporteret: upload 'assets/site-overrides.json' sammen med sitet.", "success");
   });
 
   document.getElementById("import-file").addEventListener("change", async (e) => {
