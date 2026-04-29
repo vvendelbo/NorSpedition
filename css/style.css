@@ -880,7 +880,7 @@ body.hints-dismissed .click-hint-floater {
   margin: 0 auto var(--space-md);
   border-radius: var(--radius);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(11, 31, 58, 0.12);
   box-shadow: var(--shadow-soft);
 }
@@ -888,7 +888,8 @@ body.hints-dismissed .click-hint-floater {
 .team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .team-card h3 {
@@ -1299,12 +1300,13 @@ body.hints-dismissed .click-hint-floater {
 .team-member .team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.35s ease;
 }
 
 .team-member:hover .team-photo img {
-  transform: scale(1.03);
+  transform: none;
 }
 
 .team-body {
@@ -1453,7 +1455,8 @@ body.hints-dismissed .click-hint-floater {
 .team-photo-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   border-radius: inherit;
   display: block;
 }
