@@ -1433,11 +1433,37 @@ body.hints-dismissed .click-hint-floater {
   color: rgba(255, 255, 255, 0.55);
 }
 
-.team-photo-silhouette {
-  width: 38%;
-  height: auto;
-  max-width: 110px;
-  opacity: 0.85;
+.team-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+/* Upcoming colleague: show anon until reveal */
+.team-photo-img--public {
+  display: none;
+}
+.team-member--blackout.is-revealed .team-photo-img--anon {
+  display: none;
+}
+.team-member--blackout.is-revealed .team-photo-img--public {
+  display: block;
+}
+
+.team-body--revealed {
+  display: none;
+}
+.team-member--blackout.is-revealed .team-body--blackout {
+  display: none;
+}
+.team-member--blackout.is-revealed .team-body--revealed {
+  display: grid;
+}
+.team-member--blackout.is-revealed::after {
+  content: none;
+  display: none;
 }
 
 .team-blackout-note {

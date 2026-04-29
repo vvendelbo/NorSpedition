@@ -776,6 +776,14 @@
         el.setAttribute("data-countdown-state", "done");
         if (labelEl) labelEl.textContent = "Tiltrådt";
         if (dateEl) dateEl.textContent = "Velkommen ombord.";
+
+        // Reveal upcoming colleague card (if countdown is attached to it)
+        const member = el.closest(".team-member--blackout");
+        if (member instanceof HTMLElement) {
+          member.classList.add("is-revealed");
+          const revealedBody = member.querySelector(".team-body--revealed");
+          if (revealedBody instanceof HTMLElement) revealedBody.removeAttribute("aria-hidden");
+        }
         return;
       }
 
