@@ -175,32 +175,20 @@
           <div class="team-roster" aria-label="Medarbejdere">
             <article class="team-member">
               <div class="team-photo">
-                <img src="assets/team-mathias-placeholder.svg" alt="Mathias Bruse Kristensen" width="400" height="400" loading="lazy" data-img-key="team-mathias" />
-              </div>
-              <div class="team-body">
-                <p class="team-role">Partner &amp; speditør</p>
-                <h3 class="team-name">Mathias Bruse Kristensen</h3>
-                <dl class="team-contact">
-                  <dt>Direkte</dt>
-                  <dd><a href="tel:+4520967963">+45 20 96 79 63</a></dd>
-                  <dt>E-mail</dt>
-                  <dd><a href="mailto:mbk@norspedition.dk">mbk@norspedition.dk</a></dd>
-                </dl>
-              </div>
-            </article>
-
-            <article class="team-member">
-              <div class="team-photo">
                 <img src="assets/team-viktor-placeholder.svg" alt="Viktor Mejlvang" width="400" height="400" loading="lazy" data-img-key="team-viktor" />
               </div>
               <div class="team-body">
                 <p class="team-role">Partner &amp; speditør</p>
                 <h3 class="team-name">Viktor Mejlvang</h3>
                 <dl class="team-contact">
-                  <dt>Direkte</dt>
-                  <dd><a href="tel:+4520341752">+45 20 34 17 52</a></dd>
-                  <dt>E-mail</dt>
-                  <dd><a href="mailto:vm@norspedition.dk">vm@norspedition.dk</a></dd>
+                  <div class="team-contact-row">
+                    <dt>Direkte</dt>
+                    <dd><a href="tel:+4520341752">+45 20 34 17 52</a></dd>
+                  </div>
+                  <div class="team-contact-row">
+                    <dt>E-mail</dt>
+                    <dd><a href="mailto:vm@norspedition.dk">vm@norspedition.dk</a></dd>
+                  </div>
                 </dl>
               </div>
             </article>
@@ -213,11 +201,50 @@
                 <p class="team-role">Partner &amp; speditør</p>
                 <h3 class="team-name">Victor Vendelbo</h3>
                 <dl class="team-contact">
-                  <dt>Direkte</dt>
-                  <dd><a href="tel:+4520976561">+45 20 97 65 61</a></dd>
-                  <dt>E-mail</dt>
-                  <dd><a href="mailto:vv@norspedition.dk">vv@norspedition.dk</a></dd>
+                  <div class="team-contact-row">
+                    <dt>Direkte</dt>
+                    <dd><a href="tel:+4520976561">+45 20 97 65 61</a></dd>
+                  </div>
+                  <div class="team-contact-row">
+                    <dt>E-mail</dt>
+                    <dd><a href="mailto:vv@norspedition.dk">vv@norspedition.dk</a></dd>
+                  </div>
                 </dl>
+              </div>
+            </article>
+
+            <article class="team-member team-member--blackout" aria-label="Kommende kollega">
+              <div class="team-photo team-photo--blackout" aria-hidden="true">
+                <svg class="team-photo-silhouette" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="32" cy="24" r="10" />
+                  <path d="M12 54c2-10 10-16 20-16s18 6 20 16" />
+                </svg>
+              </div>
+              <div class="team-body">
+                <h3 class="team-name">Tiltræder snart</h3>
+                <p class="team-blackout-note">Vi byder snart en ny kollega velkommen. Detaljer offentliggøres ved tiltrædelse.</p>
+                <div class="team-countdown" data-countdown-target="2026-06-01T00:00:00+02:00" aria-live="polite">
+                  <p class="team-countdown-label">Tiltræder om</p>
+                  <ul class="team-countdown-grid">
+                    <li>
+                      <span class="team-countdown-value" data-countdown-unit="days">—</span>
+                      <span class="team-countdown-unit-label">dage</span>
+                    </li>
+                    <li>
+                      <span class="team-countdown-value" data-countdown-unit="hours">—</span>
+                      <span class="team-countdown-unit-label">timer</span>
+                    </li>
+                    <li>
+                      <span class="team-countdown-value" data-countdown-unit="minutes">—</span>
+                      <span class="team-countdown-unit-label">min.</span>
+                    </li>
+                    <li>
+                      <span class="team-countdown-value" data-countdown-unit="seconds">—</span>
+                      <span class="team-countdown-unit-label">sek.</span>
+                    </li>
+                  </ul>
+                  <p class="team-countdown-date">1. juni 2026</p>
+                </div>
               </div>
             </article>
           </div>
@@ -426,6 +453,7 @@
             Vi hedder NOR Spedition, fordi vi er forankret i Nordjylland — og fordi vi arbejder med en Nordic Spirit: ordentlighed, struktur og aftaler
             der holder.
           </p>
+          <p class="footer-cvr">CVR-nr. 46&nbsp;42&nbsp;72&nbsp;62</p>
         </div>
 
         <div class="footer-addresses" aria-label="Adresser">

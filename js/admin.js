@@ -20,7 +20,7 @@
     { key: "transport-air", title: "Transportkort: Luft", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
     { key: "transport-rail", title: "Transportkort: Rail", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/card-placeholder.svg" },
 
-    { key: "team-mathias", title: "Portræt: Mathias Bruse Kristensen", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-mathias-placeholder.svg" },
+    { key: "team-mathias", title: "Portræt: Kommende kollega", desc: "Kvadratisk portræt (fx 800×800). Reserveret til kommende kollega — vises ikke på siden indtil tiltrædelse.", default: "assets/team-mathias-placeholder.svg" },
     { key: "team-viktor", title: "Portræt: Viktor Mejlvang", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-viktor-placeholder.svg" },
     { key: "team-victor", title: "Portræt: Victor Vendelbo", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-victor-placeholder.svg" },
 

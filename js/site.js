@@ -756,6 +756,51 @@
   }
 
   // ===================================================================
+  // Countdown widgets ([data-countdown-target] = ISO datetime)
+  // ===================================================================
+  const countdownEls = document.querySelectorAll("[data-countdown-target]");
+  if (countdownEls.length) {
+    const pad = (n) => String(n).padStart(2, "0");
+
+    function tickCountdown(el) {
+      const target = el.getAttribute("data-countdown-target");
+      if (!target) return;
+      const targetMs = Date.parse(target);
+      if (Number.isNaN(targetMs)) return;
+
+      const diff = targetMs - Date.now();
+      const labelEl = el.querySelector(".team-countdown-label");
+      const dateEl = el.querySelector(".team-countdown-date");
+
+      if (diff <= 0) {
+        el.setAttribute("data-countdown-state", "done");
+        if (labelEl) labelEl.textContent = "Tiltrådt";
+        if (dateEl) dateEl.textContent = "Velkommen ombord.";
+        return;
+      }
+
+      el.setAttribute("data-countdown-state", "running");
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      const map = { days: String(days), hours: pad(hours), minutes: pad(minutes), seconds: pad(seconds) };
+      el.querySelectorAll("[data-countdown-unit]").forEach((node) => {
+        const unit = node.getAttribute("data-countdown-unit");
+        if (unit && map[unit] !== undefined) node.textContent = map[unit];
+      });
+    }
+
+    function tickAll() {
+      countdownEls.forEach(tickCountdown);
+    }
+    tickAll();
+    setInterval(tickAll, 1000);
+  }
+
+  // ===================================================================
   // Quote modal + form submission
   // ===================================================================
   if (quoteDialog instanceof HTMLDialogElement) {
