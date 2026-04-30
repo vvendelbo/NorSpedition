@@ -1,4 +1,7 @@
 {
-  "images": {},
+  "images": {
+    "hero": "assets/hero-hirtshals.png",
+    "hero-video": "assets/hero-video.mp4"
+  },
   "version": 1
 }

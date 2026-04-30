@@ -94,11 +94,79 @@
     }));
   }
 
+  async function applyVideoOverrides() {
+    const overrides = getEffectiveOverrides();
+    if (!overrides || typeof overrides !== "object") return;
+
+    const cssEscape = (value) => {
+      try {
+        if (window.CSS && typeof window.CSS.escape === "function") return window.CSS.escape(value);
+      } catch {
+        // ignore
+      }
+      return String(value).replace(/["\\]/g, "\\$&");
+    };
+
+    const videos = Array.from(document.querySelectorAll("video[data-video-key]"));
+    await Promise.all(videos.map(async (el) => {
+      const key = el.getAttribute("data-video-key");
+      if (!key) return;
+      const v = overrides[key];
+
+      // optional fallback image key
+      const fallbackImgKey = el.getAttribute("data-fallback-img-key") || "";
+      const fallbackImg =
+        fallbackImgKey ? document.querySelector(`img[data-img-key="${cssEscape(fallbackImgKey)}"]`) : null;
+
+      if (!v) {
+        el.hidden = true;
+        if (fallbackImg instanceof HTMLImageElement) fallbackImg.hidden = false;
+        el.removeAttribute("src");
+        el.load();
+        return;
+      }
+
+      const url = await resolveOverrideUrl(key, v);
+      if (!url) return;
+
+      // Ensure autoplay works reliably across browsers
+      el.muted = true;
+      el.playsInline = true;
+      el.autoplay = true;
+      el.loop = true;
+
+      // Keep fallback visible until first frame is ready
+      el.hidden = false;
+      if (fallbackImg instanceof HTMLImageElement) fallbackImg.hidden = false;
+
+      const onReady = () => {
+        if (fallbackImg instanceof HTMLImageElement) fallbackImg.hidden = true;
+        el.removeEventListener("loadeddata", onReady);
+        el.removeEventListener("canplay", onReady);
+      };
+      const onError = () => {
+        el.hidden = true;
+        if (fallbackImg instanceof HTMLImageElement) fallbackImg.hidden = false;
+        el.removeEventListener("error", onError);
+      };
+
+      el.addEventListener("loadeddata", onReady, { once: true });
+      el.addEventListener("canplay", onReady, { once: true });
+      el.addEventListener("error", onError, { once: true });
+
+      el.src = url;
+      el.load();
+      el.play().catch(() => {});
+    }));
+  }
+
   // Apply overrides ASAP, then re-apply when published overrides load
   applyImageOverrides();
+  applyVideoOverrides();
   (async () => {
     publishedOverrides = await loadPublishedOverrides();
     applyImageOverrides();
+    applyVideoOverrides();
   })();
 
   const yearEl = document.getElementById("year");

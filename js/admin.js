@@ -130,6 +130,7 @@
   const slots = [
     { key: "logo", title: "Logo", desc: "Vises i header og footer. Transparent PNG eller SVG anbefales.", default: "assets/logo-nor-spedition.png" },
     { key: "hero", title: "Hero-baggrund (forsiden)", desc: "Stort billede bag overskriften. Bredformat (fx 2400×1350) virker bedst.", default: "assets/hero-placeholder.svg" },
+    { key: "hero-video", title: "Hero-video (forsiden)", desc: "Video-baggrund i loop. MP4 eller WebM anbefales (samme bredformat som hero-billedet).", default: "", kind: "video" },
 
     { key: "keypoint-overblik", title: "Keypoint: Overblik", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
     { key: "keypoint-tempo", title: "Keypoint: Tempo", desc: "Kvadratisk ikon/billede (128×128 eller større).", default: "assets/card-placeholder.svg" },
@@ -228,6 +229,7 @@
   function renderSlot(slot) {
     const node = tpl.content.firstElementChild.cloneNode(true);
     const img = node.querySelector("img");
+    const video = node.querySelector("video");
     const titleEl = node.querySelector(".admin-slot-title");
     const descEl = node.querySelector(".admin-slot-desc");
     const keyEl = node.querySelector(".admin-slot-key code");
@@ -238,7 +240,20 @@
     descEl.textContent = slot.desc;
     keyEl.textContent = slot.key;
 
-    img.alt = slot.title;
+    if (img) img.alt = slot.title;
+
+    const kind = slot.kind === "video" ? "video" : "image";
+    if (fileInput instanceof HTMLInputElement) {
+      fileInput.accept = kind === "video" ? "video/*" : "image/*";
+      const labelText = node.querySelector(".admin-upload-label span");
+      if (labelText) labelText.textContent = kind === "video" ? "Vælg video…" : "Vælg billede…";
+    }
+    if (video instanceof HTMLVideoElement) {
+      video.hidden = kind !== "video";
+    }
+    if (img instanceof HTMLImageElement) {
+      img.hidden = kind === "video";
+    }
 
     async function refreshPreview() {
       const overrides = loadOverrides();
@@ -251,26 +266,45 @@
         if (blob) {
           const url = URL.createObjectURL(blob);
           slotObjectUrls.set(slot.key, url);
-          img.src = url;
+          if (kind === "video" && video instanceof HTMLVideoElement) {
+            video.src = url;
+            video.load();
+            video.play().catch(() => {});
+          } else if (img instanceof HTMLImageElement) {
+            img.src = url;
+          }
           return;
         }
       }
-      img.src = current || slot.default;
+      if (kind === "video" && video instanceof HTMLVideoElement) {
+        video.src = current || "";
+        video.load();
+        if (video.src) video.play().catch(() => {});
+      } else if (img instanceof HTMLImageElement) {
+        img.src = current || slot.default;
+      }
     }
     refreshPreview();
 
     fileInput.addEventListener("change", async (e) => {
       const f = e.target && e.target.files && e.target.files[0];
       if (!f) return;
-      if (!/^image\//.test(f.type)) {
-        setStatus("Filen er ikke et billede.", "warn");
-        return;
+      if (kind === "video") {
+        if (!/^video\//.test(f.type)) {
+          setStatus("Filen er ikke en video.", "warn");
+          return;
+        }
+      } else {
+        if (!/^image\//.test(f.type)) {
+          setStatus("Filen er ikke et billede.", "warn");
+          return;
+        }
       }
       try {
         try {
           await idbSet(slot.key, f);
         } catch {
-          setStatus("Kunne ikke gemme billedet i browserens storage (IndexedDB).", "warn");
+          setStatus("Kunne ikke gemme filen i browserens storage (IndexedDB).", "warn");
           return;
         }
         const all = loadOverrides();
@@ -291,24 +325,36 @@
         saveOverrides(all);
       }
       idbDel(slot.key).catch(() => {});
-      img.src = slot.default;
+      if (kind === "video" && video instanceof HTMLVideoElement) {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+      } else if (img instanceof HTMLImageElement) {
+        img.src = slot.default;
+      }
       setStatus(`“${slot.title}” nulstillet.`, "success");
     });
 
-    slotNodes.set(slot.key, img);
+    slotNodes.set(slot.key, kind === "video" ? video : img);
     return node;
   }
 
   for (const s of slots) grid.appendChild(renderSlot(s));
 
   document.getElementById("reset-all-btn").addEventListener("click", () => {
-    if (!confirm("Sikker på du vil nulstille ALLE billeder til placeholders?")) return;
+    if (!confirm("Sikker på du vil nulstille ALLE medier til standard?")) return;
     localStorage.removeItem(IMG_STORAGE_KEY);
     for (const s of slots) {
-      const img = slotNodes.get(s.key);
-      if (img) img.src = s.default;
+      const node = slotNodes.get(s.key);
+      if (node instanceof HTMLVideoElement) {
+        node.pause();
+        node.removeAttribute("src");
+        node.load();
+      } else if (node instanceof HTMLImageElement) {
+        node.src = s.default;
+      }
     }
-    setStatus("Alle billeder nulstillet.", "success");
+    setStatus("Alle medier nulstillet.", "success");
   });
 
   document.getElementById("export-btn").addEventListener("click", () => {
