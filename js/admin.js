@@ -407,6 +407,7 @@
       }
       const payload = {
         images,
+        formEndpoint: localStorage.getItem(ENDPOINT_KEY) || "",
         exportedAt: new Date().toISOString(),
         version: 1,
       };

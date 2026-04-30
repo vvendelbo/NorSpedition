@@ -1,7 +1,8 @@
 {
   "images": {
     "hero": "assets/hero-hirtshals.png",
-    "hero-video": "assets/hero-video.mp4"
+    "hero-video": "assets/hero-video.mp4",
+    "team-victor": "assets/team-victor.png"
   },
   "version": 1
 }

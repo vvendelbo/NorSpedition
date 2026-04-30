@@ -10,6 +10,7 @@
   const IDB_PREFIX = "idb:";
 
   let publishedOverrides = {};
+  let publishedFormEndpoint = "";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
@@ -19,9 +20,10 @@
       const json = await res.json();
       if (!json || typeof json !== "object") return {};
       const images = json.images && typeof json.images === "object" ? json.images : {};
-      return images;
+      const formEndpoint = typeof json.formEndpoint === "string" ? json.formEndpoint : "";
+      return { images, formEndpoint };
     } catch {
-      return {};
+      return { images: {}, formEndpoint: "" };
     }
   }
 
@@ -164,7 +166,9 @@
   applyImageOverrides();
   applyVideoOverrides();
   (async () => {
-    publishedOverrides = await loadPublishedOverrides();
+    const published = await loadPublishedOverrides();
+    publishedOverrides = (published && published.images) || {};
+    publishedFormEndpoint = (published && published.formEndpoint) || "";
     applyImageOverrides();
     applyVideoOverrides();
   })();
@@ -1017,9 +1021,15 @@
           statusEl.dataset.tone = tone || "";
         };
 
-        // Read endpoint from data-endpoint (configured from admin.html or manually)
-        const endpoint = form.getAttribute("data-endpoint") ||
-          localStorage.getItem("nor-spedition.form-endpoint") || "";
+        // Read endpoint from:
+        // - data-endpoint (hardcoded)
+        // - localStorage (admin test)
+        // - published overrides (assets/site-overrides.json)
+        const endpoint =
+          form.getAttribute("data-endpoint") ||
+          localStorage.getItem("nor-spedition.form-endpoint") ||
+          publishedFormEndpoint ||
+          "";
 
         // If an endpoint is configured, POST to it (Formspree/Basin/Getform/Netlify etc.)
         if (endpoint) {
