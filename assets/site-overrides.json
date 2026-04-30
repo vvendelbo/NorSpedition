@@ -4,5 +4,6 @@
     "hero-video": "assets/hero-video.mp4",
     "team-victor": "assets/team-victor.png"
   },
+  "formEndpoint": "https://formspree.io/f/mgodewkp",
   "version": 1
 }
