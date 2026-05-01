@@ -184,10 +184,28 @@
   const navDropdown = document.querySelector(".nav-dropdown");
 
   if (navBtn && nav) {
-    navBtn.addEventListener("click", () => {
-      const open = nav.classList.toggle("is-open");
+    const setMobileNavOpen = (open) => {
+      nav.classList.toggle("is-open", open);
       navBtn.setAttribute("aria-expanded", String(open));
       navBtn.setAttribute("aria-label", open ? "Luk menu" : "Åbn menu");
+      document.body.classList.toggle("nav-open", open);
+    };
+
+    navBtn.addEventListener("click", () => {
+      const open = !nav.classList.contains("is-open");
+      setMobileNavOpen(open);
+    });
+
+    nav.querySelectorAll("a[href]").forEach((a) => {
+      a.addEventListener("click", () => {
+        if (nav.classList.contains("is-open")) setMobileNavOpen(false);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 769px)").matches && nav.classList.contains("is-open")) {
+        setMobileNavOpen(false);
+      }
     });
   }
 
