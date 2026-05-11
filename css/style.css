@@ -284,13 +284,23 @@ a:hover {
 }
 
 .hero-photo {
-  background: none;
+  /* Keep a stable placeholder while the real hero media loads */
+  background: url("../assets/hero-placeholder.svg") center / cover no-repeat;
 }
 
 /* Show a bit more of the hero image/video on the front page */
 .hero.hero-photo {
   min-height: min(78vh, 720px);
   align-items: flex-end;
+}
+
+.hero.hero-photo .hero-img {
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.hero.hero-photo .hero-img.is-loaded {
+  opacity: 1;
 }
 
 .hero.hero-photo .hero-inner {

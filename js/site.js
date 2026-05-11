@@ -92,7 +92,30 @@
       const v = overrides[key];
       if (!v) return;
       const url = await resolveOverrideUrl(key, v);
-      if (url && el instanceof HTMLImageElement) el.src = url;
+      if (!url || !(el instanceof HTMLImageElement)) return;
+
+      // Avoid "template flash" while the replacement image loads:
+      // preload first, then swap + fade in once ready.
+      const current = el.currentSrc || el.src || "";
+      if (current === url) {
+        el.classList.add("is-loaded");
+        return;
+      }
+
+      el.classList.remove("is-loaded");
+
+      const preloader = new Image();
+      preloader.decoding = "async";
+      preloader.onload = () => {
+        el.src = url;
+        // Next frame to ensure transition triggers reliably
+        requestAnimationFrame(() => el.classList.add("is-loaded"));
+      };
+      preloader.onerror = () => {
+        // Keep placeholder visible; don't swap src on error
+        el.classList.add("is-loaded");
+      };
+      preloader.src = url;
     }));
   }
 
