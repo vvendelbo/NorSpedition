@@ -15,6 +15,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/i18n.js" defer></script>
+    <script src="js/transport-content.js" defer></script>
     <script src="js/site.js" defer></script>
   </head>
   <body>
@@ -48,7 +50,7 @@
             <a href="who.html" data-i18n="nav.who">Hvem er vi</a>
             <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
           </nav>
-          <div class="lang-switch" aria-label="Sprogvalg">
+          <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
             <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
             <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
           </div>
@@ -59,9 +61,9 @@
     <main>
       <section class="section" aria-labelledby="news-heading">
         <div class="section-inner">
-          <p class="section-label">Nyheder</p>
-          <h1 id="news-heading">Indlæg</h1>
-          <p class="section-intro">Eksempelindlæg (lorem ipsum) så layoutet kan ses.</p>
+          <p class="section-label" data-i18n="news.label">Nyheder</p>
+          <h1 id="news-heading" data-i18n="news.title">Indlæg</h1>
+          <p class="section-intro" data-i18n="news.intro">Eksempelindlæg (lorem ipsum) så layoutet kan ses.</p>
 
           <div class="posts-grid">
             <article class="post-card">
@@ -70,7 +72,7 @@
               <p class="post-excerpt">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
               </p>
-              <a class="post-link" href="#" aria-label="Læs mere: Lorem ipsum dolor sit amet">Læs mere</a>
+              <a class="post-link" href="#" data-i18n="home.readMore">Læs mere</a>
             </article>
 
             <article class="post-card">
@@ -79,7 +81,7 @@
               <p class="post-excerpt">
                 Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
               </p>
-              <a class="post-link" href="#" aria-label="Læs mere: Sed nisi. Nulla quis sem">Læs mere</a>
+              <a class="post-link" href="#" data-i18n="home.readMore">Læs mere</a>
             </article>
 
             <article class="post-card">
@@ -88,7 +90,7 @@
               <p class="post-excerpt">
                 Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
               </p>
-              <a class="post-link" href="#" aria-label="Læs mere: Maecenas tincidunt lacus">Læs mere</a>
+              <a class="post-link" href="#" data-i18n="home.readMore">Læs mere</a>
             </article>
           </div>
         </div>

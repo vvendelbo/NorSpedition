@@ -15,6 +15,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/i18n.js" defer></script>
+    <script src="js/transport-content.js" defer></script>
     <script src="js/site.js" defer></script>
   </head>
   <body>
@@ -23,17 +25,21 @@
         <a class="brand" href="index.html#top" aria-label="NOR Spedition">
           <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" />
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Åbn menu">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n-aria-label="a11y.navOpen">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
           </svg>
         </button>
         <div class="header-right">
-          <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
-            <a href="index.html#team">Team</a>
-            <a href="transportformer.html" aria-current="page">Transportformer</a>
-            <a href="mailto:contact@norspedition.dk">Kontakt</a>
+          <nav class="nav-main" id="main-nav" data-i18n-aria-label="a11y.navMain">
+            <a href="index.html#team" data-i18n="nav.team">Team</a>
+            <a href="transportformer.html" aria-current="page" data-i18n="nav.transportModes">Transportformer</a>
+            <a href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
           </nav>
+          <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
         </div>
       </div>
     </header>
@@ -41,22 +47,22 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-inner">
-          <p class="hero-kicker">Ydelser</p>
-          <h1 id="hero-heading">Transportformer</h1>
-          <p class="hero-lead">Et overblik over de transportformer vi typisk hjælper med.</p>
+          <p class="hero-kicker" data-i18n="transportPage.kicker">Ydelser</p>
+          <h1 id="hero-heading" data-i18n="transportPage.title">Transportformer</h1>
+          <p class="hero-lead" data-i18n="transportPage.lead">Et overblik over de transportformer vi typisk hjælper med.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:contact@norspedition.dk">Kontakt os</a>
-            <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
-            <a class="btn btn-outline" href="index.html">Til forsiden</a>
+            <a class="btn btn-primary" href="mailto:contact@norspedition.dk" data-i18n="hero.contact">Kontakt os</a>
+            <button class="btn btn-accent" type="button" data-open-quote data-i18n="hero.quote">Spørg på pris</button>
+            <a class="btn btn-outline" href="index.html" data-i18n="transportPage.home">Til forsiden</a>
           </div>
         </div>
       </section>
 
       <section class="section section-alt" aria-labelledby="modes-heading">
         <div class="section-inner">
-          <p class="section-label">Oversigt</p>
-          <h2 id="modes-heading">Vælg den rigtige løsning</h2>
-          <p class="section-intro">
+          <p class="section-label" data-i18n="transportPage.overviewLabel">Oversigt</p>
+          <h2 id="modes-heading" data-i18n="transportPage.overviewTitle">Vælg den rigtige løsning</h2>
+          <p class="section-intro" data-i18n="transportPage.overviewIntro">
             Road, sea, air og rail — samt courier/express, når det haster. Skriv eller ring, så finder vi den bedste løsning.
           </p>
 
@@ -72,7 +78,7 @@
                 </svg>
               </div>
               <h3>Road</h3>
-              <p>Stykgods og fullload med løbende status og aftalt leveringsplan.</p>
+              <p data-i18n="transportPage.road.desc">Stykgods og fullload med løbende status og aftalt leveringsplan.</p>
             </article>
 
             <article class="service-card">
@@ -85,7 +91,7 @@
                 </svg>
               </div>
               <h3>Sea</h3>
-              <p>Container og stykgods — planlagt, robust og omkostningsbevidst.</p>
+              <p data-i18n="transportPage.sea.desc">Container og stykgods — planlagt, robust og omkostningsbevidst.</p>
             </article>
 
             <article class="service-card">
@@ -95,7 +101,7 @@
                 </svg>
               </div>
               <h3>Air</h3>
-              <p>Når tiden er vigtig — hurtig afgang og klar forventningsafstemning.</p>
+              <p data-i18n="transportPage.air.desc">Når tiden er vigtig — hurtig afgang og klar forventningsafstemning.</p>
             </article>
 
             <article class="service-card">
@@ -110,7 +116,7 @@
                 </svg>
               </div>
               <h3>Rail</h3>
-              <p>Et stærkt alternativ på udvalgte korridorer, når det giver mening.</p>
+              <p data-i18n="transportPage.rail.desc">Et stærkt alternativ på udvalgte korridorer, når det giver mening.</p>
             </article>
 
             <article class="service-card">
@@ -122,7 +128,7 @@
                 </svg>
               </div>
               <h3>Courier</h3>
-              <p>Direkte levering med tæt opfølgning og sporbarhed.</p>
+              <p data-i18n="transportPage.courier.desc">Direkte levering med tæt opfølgning og sporbarhed.</p>
             </article>
 
             <article class="service-card">
@@ -132,7 +138,7 @@
                 </svg>
               </div>
               <h3>Express</h3>
-              <p>Når det haster — hurtig afgang og klar forventningsafstemning.</p>
+              <p data-i18n="transportPage.express.desc">Når det haster — hurtig afgang og klar forventningsafstemning.</p>
             </article>
           </div>
         </div>
@@ -142,9 +148,9 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <p>© <span id="year"></span> NOR Spedition</p>
-        <nav class="footer-links" aria-label="Footer">
-          <a href="#top">Til toppen</a>
-          <a href="mailto:contact@norspedition.dk">Kontakt</a>
+        <nav class="footer-links" data-i18n-aria-label="a11y.footer">
+          <a href="#top" data-i18n="footer.top">Til toppen</a>
+          <a href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
         </nav>
       </div>
     </footer>

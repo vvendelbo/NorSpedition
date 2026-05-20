@@ -15,6 +15,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/i18n.js" defer></script>
+    <script src="js/transport-content.js" defer></script>
     <script src="js/site.js" defer></script>
   </head>
   <body>
@@ -23,17 +25,21 @@
         <a class="brand" href="#top" aria-label="NOR Spedition">
           <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" data-img-key="logo" />
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Åbn menu">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n-aria-label="a11y.navOpen">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
           </svg>
         </button>
         <div class="header-right">
-          <nav class="nav-main" id="main-nav" aria-label="Hovednavigation">
-            <a href="#transportformer">Transportformer</a>
-            <a href="#team">Team</a>
-            <a href="mailto:contact@norspedition.dk">Kontakt</a>
+          <nav class="nav-main" id="main-nav" data-i18n-aria-label="a11y.navMain">
+            <a href="#transportformer" data-i18n="nav.transportModes">Transportformer</a>
+            <a href="#team" data-i18n="nav.team">Team</a>
+            <a href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
           </nav>
+          <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
         </div>
       </div>
     </header>
@@ -54,26 +60,26 @@
         ></video>
         <img class="hero-img" src="assets/hero-placeholder.svg" alt="" width="1200" height="675" data-img-key="hero" />
         <div class="hero-inner">
-          <p class="hero-kicker">Spedition &amp; logistik</p>
-          <h1 id="hero-heading">Aftaler <em>der holder.</em></h1>
-          <p class="hero-lead">Forudsigelighed, transparens og stærke partnerskaber — på tværs af landevej, sø, luft og rail.</p>
+          <p class="hero-kicker" data-i18n="hero.kicker">Spedition &amp; logistik</p>
+          <h1 id="hero-heading" data-i18n-html="hero.title">Aftaler <em>der holder.</em></h1>
+          <p class="hero-lead" data-i18n="hero.lead">Forudsigelighed, transparens og stærke partnerskaber — på tværs af landevej, sø, luft og rail.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:contact@norspedition.dk">Kontakt os</a>
-            <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
-            <a class="btn btn-outline" href="#transportformer">Se transportformer</a>
+            <a class="btn btn-primary" href="mailto:contact@norspedition.dk" data-i18n="hero.contact">Kontakt os</a>
+            <button class="btn btn-accent" type="button" data-open-quote data-i18n="hero.quote">Spørg på pris</button>
+            <a class="btn btn-outline" href="#transportformer" data-i18n="hero.transport">Se transportformer</a>
           </div>
         </div>
       </section>
 
       <section class="section section-alt full-bleed" aria-labelledby="keypoints-heading">
         <div class="section-inner wide">
-          <p class="section-label">Hvorfor NOR Spedition</p>
-          <h2 id="keypoints-heading" class="section-title">Det får du, når vi rykker dit gods</h2>
+          <p class="section-label" data-i18n="keypoints.label">Hvorfor NOR Spedition</p>
+          <h2 id="keypoints-heading" class="section-title" data-i18n="keypoints.title">Det får du, når vi rykker dit gods</h2>
           <div class="keypoint-row" aria-label="Key points">
             <article class="keypoint">
               <div class="keypoint-text">
-                <h3>Overblik</h3>
-                <p>En fast kontaktperson og klare aftaler fra booking til levering.</p>
+                <h3 data-i18n="keypoints.overview.title">Overblik</h3>
+                <p data-i18n="keypoints.overview.text">En fast kontaktperson og klare aftaler fra booking til levering.</p>
               </div>
             </article>
             <article class="keypoint">
@@ -84,14 +90,14 @@
             </article>
             <article class="keypoint">
               <div class="keypoint-text">
-                <h3>Struktur</h3>
-                <p>Dokumenter og opfølgning samlet, så intet falder mellem to stole.</p>
+                <h3 data-i18n="keypoints.structure.title">Struktur</h3>
+                <p data-i18n="keypoints.structure.text">Dokumenter og opfølgning samlet, så intet falder mellem to stole.</p>
               </div>
             </article>
             <article class="keypoint">
               <div class="keypoint-text">
-                <h3>Netværk</h3>
-                <p>Stærke partnerskaber — vi finder kapaciteten, også på de vanskelige dage.</p>
+                <h3 data-i18n="keypoints.network.title">Netværk</h3>
+                <p data-i18n="keypoints.network.text">Stærke partnerskaber — vi finder kapaciteten, også på de vanskelige dage.</p>
               </div>
             </article>
           </div>
@@ -100,15 +106,15 @@
 
       <section class="section full-bleed" id="transportformer" aria-labelledby="transport-heading">
         <div class="section-inner wide">
-          <p class="section-label">De fire transportformer</p>
-          <h2 id="transport-heading">Én af fire — <em>altid med samme service.</em></h2>
-          <p class="section-intro">
+          <p class="section-label" data-i18n="transport.label">De fire transportformer</p>
+          <h2 id="transport-heading" data-i18n-html="transport.title">Én af fire — <em>altid med samme service.</em></h2>
+          <p class="section-intro" data-i18n="transport.intro">
             I bund og grund findes der fire transportformer: landevej, sø, luft og rail. Vi excellerer i alle fire gennem stærke partnerskaber og
             et bredt netværk — og hjælper dig med at vælge rigtigt ud fra tid, pris og robusthed. Klik på et kort for at se forcer, svagheder og hvilke materieltyper vi typisk anvender.
           </p>
 
           <div class="click-hint-floater" aria-hidden="true">
-            <span class="click-hint-text">Tryk på et kort</span>
+            <span class="click-hint-text" data-i18n="transport.hint">Tryk på et kort</span>
             <svg class="click-hint-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 5v14" />
               <path d="m6 13 6 6 6-6" />
@@ -118,38 +124,38 @@
           <div class="transport-grid big" aria-label="Transportformer">
             <button class="transport-card transport-card--visual" type="button" data-transport="road" data-modal-open>
               <img class="card-media" src="assets/transport-road.png" alt="" width="1200" height="1600" loading="lazy" />
-              <span class="card-badge">01 · Landevej</span>
+              <span class="card-badge" data-i18n="transport.road.badge">01 · Landevej</span>
               <div class="card-overlay">
-                <h3>Landevej</h3>
-                <p>Fleksibel distribution i Europa med høj frekvens og tydelig plan.</p>
-                <span class="card-cta">Se forcer, svagheder &amp; materiel →</span>
+                <h3 data-i18n="transport.road.title">Landevej</h3>
+                <p data-i18n="transport.road.desc">Fleksibel distribution i Europa med høj frekvens og tydelig plan.</p>
+                <span class="card-cta" data-i18n="transport.road.cta">Se forcer, svagheder &amp; materiel →</span>
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="sea" data-modal-open>
               <img class="card-media" src="assets/transport-sea.webp" alt="" width="1200" height="1600" loading="lazy" />
-              <span class="card-badge">02 · Sø</span>
+              <span class="card-badge" data-i18n="transport.sea.badge">02 · Sø</span>
               <div class="card-overlay">
-                <h3>Sø</h3>
-                <p>Robust og omkostningseffektiv til volumen — FCL/LCL.</p>
-                <span class="card-cta">Se forcer, svagheder &amp; materiel →</span>
+                <h3 data-i18n="transport.sea.title">Sø</h3>
+                <p data-i18n="transport.sea.desc">Robust og omkostningseffektiv til volumen — FCL/LCL.</p>
+                <span class="card-cta" data-i18n="transport.sea.cta">Se forcer, svagheder &amp; materiel →</span>
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="air" data-modal-open>
               <img class="card-media" src="assets/transport-air.webp" alt="" width="1200" height="1600" loading="lazy" />
-              <span class="card-badge">03 · Luft</span>
+              <span class="card-badge" data-i18n="transport.air.badge">03 · Luft</span>
               <div class="card-overlay">
-                <h3>Luft</h3>
-                <p>Når tid er kritisk — plan, cut-offs og sikre handovers.</p>
-                <span class="card-cta">Se forcer, svagheder &amp; materiel →</span>
+                <h3 data-i18n="transport.air.title">Luft</h3>
+                <p data-i18n="transport.air.desc">Når tid er kritisk — plan, cut-offs og sikre handovers.</p>
+                <span class="card-cta" data-i18n="transport.air.cta">Se forcer, svagheder &amp; materiel →</span>
               </div>
             </button>
             <button class="transport-card transport-card--visual" type="button" data-transport="rail" data-modal-open>
               <img class="card-media" src="assets/transport-rail.webp" alt="" width="1200" height="1600" loading="lazy" />
-              <span class="card-badge">04 · Rail</span>
+              <span class="card-badge" data-i18n="transport.rail.badge">04 · Rail</span>
               <div class="card-overlay">
-                <h3>Rail</h3>
-                <p>Et stærkt alternativ på udvalgte korridorer med stabil kapacitet.</p>
-                <span class="card-cta">Se forcer, svagheder &amp; materiel →</span>
+                <h3 data-i18n="transport.rail.title">Rail</h3>
+                <p data-i18n="transport.rail.desc">Et stærkt alternativ på udvalgte korridorer med stabil kapacitet.</p>
+                <span class="card-cta" data-i18n="transport.rail.cta">Se forcer, svagheder &amp; materiel →</span>
               </div>
             </button>
           </div>
@@ -157,19 +163,19 @@
           <ul class="stat-row" aria-label="Hvad du får med NOR Spedition">
             <li>
               <span class="stat-num">4</span>
-              <span class="stat-label">Transportformer under ét tag</span>
+              <span class="stat-label" data-i18n="stats.modes">Transportformer under ét tag</span>
             </li>
             <li>
               <span class="stat-num">2</span>
-              <span class="stat-label">Kontorer — Hirtshals &amp; København</span>
+              <span class="stat-label" data-i18n="stats.offices">Kontorer — Hirtshals &amp; København</span>
             </li>
             <li>
               <span class="stat-num">100%</span>
-              <span class="stat-label">Sporbarhed og klare aftaler</span>
+              <span class="stat-label" data-i18n="stats.traceability">Sporbarhed og klare aftaler</span>
             </li>
             <li>
               <span class="stat-num">1</span>
-              <span class="stat-label">Fast kontaktperson pr. kunde</span>
+              <span class="stat-label" data-i18n="stats.contact">Fast kontaktperson pr. kunde</span>
             </li>
           </ul>
         </div>
@@ -177,9 +183,9 @@
 
       <section class="section section-alt" id="team" aria-labelledby="team-heading">
         <div class="section-inner wide">
-          <p class="section-label">Mennesker bag</p>
-          <h2 id="team-heading">Dem <em>du ringer til.</em></h2>
-          <p class="section-intro">
+          <p class="section-label" data-i18n="team.label">Mennesker bag</p>
+          <h2 id="team-heading" data-i18n-html="team.title">Dem <em>du ringer til.</em></h2>
+          <p class="section-intro" data-i18n="team.intro">
             Hos NOR Spedition arbejder du altid med et menneske — ikke et ticket-system. Bag os står langvarige partnerskaber, faste aftaler og et bredt netværk af pålidelige samarbejdspartnere, og det er det, der giver os reel global rækkevidde.
           </p>
 
@@ -189,15 +195,15 @@
                 <img src="assets/team-viktor.png" alt="Viktor Mejlvang" width="800" height="800" loading="lazy" />
               </div>
               <div class="team-body">
-                <p class="team-role">Partner &amp; speditør</p>
+                <p class="team-role" data-i18n="team.role.partner">Partner &amp; speditør</p>
                 <h3 class="team-name">Viktor Mejlvang</h3>
                 <dl class="team-contact">
                   <div class="team-contact-row">
-                    <dt>Direkte</dt>
+                    <dt data-i18n="team.direct">Direkte</dt>
                     <dd><a href="tel:+4520341752">+45 20 34 17 52</a></dd>
                   </div>
                   <div class="team-contact-row">
-                    <dt>E-mail</dt>
+                    <dt data-i18n="team.email">E-mail</dt>
                     <dd><a href="mailto:vm@norspedition.dk">vm@norspedition.dk</a></dd>
                   </div>
                 </dl>
@@ -209,15 +215,15 @@
                 <img src="assets/team-victor-placeholder.svg" alt="Victor Vendelbo" width="400" height="400" loading="lazy" data-img-key="team-victor" />
               </div>
               <div class="team-body">
-                <p class="team-role">Partner &amp; speditør</p>
+                <p class="team-role" data-i18n="team.role.partner">Partner &amp; speditør</p>
                 <h3 class="team-name">Victor Vendelbo</h3>
                 <dl class="team-contact">
                   <div class="team-contact-row">
-                    <dt>Direkte</dt>
+                    <dt data-i18n="team.direct">Direkte</dt>
                     <dd><a href="tel:+4520976561">+45 20 97 65 61</a></dd>
                   </div>
                   <div class="team-contact-row">
-                    <dt>E-mail</dt>
+                    <dt data-i18n="team.email">E-mail</dt>
                     <dd><a href="mailto:vv@norspedition.dk">vv@norspedition.dk</a></dd>
                   </div>
                 </dl>
@@ -231,36 +237,36 @@
               </div>
 
               <div class="team-body team-body--blackout">
-                <h3 class="team-name">Tiltræder snart</h3>
-                <p class="team-blackout-note">Vi byder snart en ny kollega velkommen. Detaljer offentliggøres ved tiltrædelse.</p>
+                <h3 class="team-name" data-i18n="team.joiningSoon">Tiltræder snart</h3>
+                <p class="team-blackout-note" data-i18n="team.joiningNote">Vi byder snart en ny kollega velkommen. Detaljer offentliggøres ved tiltrædelse.</p>
                 <div class="team-countdown" data-countdown-target="2026-06-01T00:00:00+02:00" aria-live="polite">
-                  <p class="team-countdown-label">Tiltræder om</p>
+                  <p class="team-countdown-label" data-i18n="team.joiningCountdown">Tiltræder om</p>
                   <ul class="team-countdown-grid">
                     <li>
                       <span class="team-countdown-value" data-countdown-unit="days">—</span>
-                      <span class="team-countdown-unit-label">dage</span>
+                      <span class="team-countdown-unit-label" data-i18n="team.days">dage</span>
                     </li>
                     <li>
                       <span class="team-countdown-value" data-countdown-unit="hours">—</span>
-                      <span class="team-countdown-unit-label">timer</span>
+                      <span class="team-countdown-unit-label" data-i18n="team.hours">timer</span>
                     </li>
                     <li>
                       <span class="team-countdown-value" data-countdown-unit="minutes">—</span>
-                      <span class="team-countdown-unit-label">min.</span>
+                      <span class="team-countdown-unit-label" data-i18n="team.mins">min.</span>
                     </li>
                     <li>
                       <span class="team-countdown-value" data-countdown-unit="seconds">—</span>
-                      <span class="team-countdown-unit-label">sek.</span>
+                      <span class="team-countdown-unit-label" data-i18n="team.secs">sek.</span>
                     </li>
                   </ul>
-                  <p class="team-countdown-date">1. juni 2026</p>
+                  <p class="team-countdown-date" data-i18n="team.joinedDate">1. juni 2026</p>
                 </div>
               </div>
 
               <div class="team-body team-body--revealed" aria-hidden="true">
-                <p class="team-role">Speditør</p>
+                <p class="team-role" data-i18n="team.role.forwarder">Speditør</p>
                 <h3 class="team-name">Mathias</h3>
-                <p class="team-blackout-note">Velkommen til Mathias — ny kollega hos NOR Spedition.</p>
+                <p class="team-blackout-note" data-i18n="team.mathias.welcome">Velkommen til Mathias — ny kollega hos NOR Spedition.</p>
               </div>
             </article>
           </div>
@@ -271,39 +277,39 @@
 
     <dialog class="modal" id="transport-modal" aria-labelledby="modal-title">
       <div class="modal-inner">
-        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
+        <button class="modal-close" type="button" data-modal-close data-i18n-aria-label="a11y.close">×</button>
         <p class="section-label" id="modal-kicker">Transportform</p>
         <h2 id="modal-title">Titel</h2>
         <p class="section-intro" id="modal-lead">Intro</p>
 
         <div class="modal-pros-cons">
           <div class="pros">
-            <h3 class="modal-subtitle">Forcer</h3>
+            <h3 class="modal-subtitle" data-i18n="modal.pros">Forcer</h3>
             <ul class="modal-list modal-list--pros" id="modal-pros"></ul>
           </div>
           <div class="cons">
-            <h3 class="modal-subtitle">Svagheder</h3>
+            <h3 class="modal-subtitle" data-i18n="modal.cons">Svagheder</h3>
             <ul class="modal-list modal-list--cons" id="modal-cons"></ul>
           </div>
         </div>
 
         <div class="modal-equipment-block">
-          <h3 class="modal-subtitle">Materieltyper vi arbejder med</h3>
+          <h3 class="modal-subtitle" data-i18n="modal.equipment">Materieltyper vi arbejder med</h3>
           <p class="modal-equipment-intro" id="modal-equipment-intro"></p>
-          <p class="modal-equipment-hint">Klik på en materieltype for detaljer og visualisering.</p>
+          <p class="modal-equipment-hint" data-i18n="modal.equipmentHint">Klik på en materieltype for detaljer og visualisering.</p>
           <ul class="equipment-grid" id="modal-equipment"></ul>
         </div>
 
         <div class="hero-actions" aria-label="Modal handlinger">
-          <a class="btn btn-primary" href="mailto:contact@norspedition.dk" data-modal-close>Kontakt os om denne løsning</a>
-          <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
+          <a class="btn btn-primary" href="mailto:contact@norspedition.dk" data-modal-close data-i18n="modal.contactAbout">Kontakt os om denne løsning</a>
+          <button class="btn btn-accent" type="button" data-open-quote data-i18n="hero.quote">Spørg på pris</button>
         </div>
       </div>
     </dialog>
 
     <dialog class="modal modal--equipment" id="equipment-modal" aria-labelledby="equipment-title">
       <div class="modal-inner">
-        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
+        <button class="modal-close" type="button" data-modal-close data-i18n-aria-label="a11y.close">×</button>
         <p class="section-label" id="equipment-kicker">Materieltype</p>
         <h2 id="equipment-title">Titel</h2>
         <p class="section-intro" id="equipment-lead"></p>
@@ -314,30 +320,30 @@
             <figcaption id="equipment-caption"></figcaption>
           </figure>
           <div class="equipment-detail">
-            <h3 class="modal-subtitle">Specifikationer</h3>
+            <h3 class="modal-subtitle" data-i18n="modal.specs">Specifikationer</h3>
             <dl class="equipment-specs-list" id="equipment-specs-list"></dl>
 
-            <h3 class="modal-subtitle">Velegnet til</h3>
+            <h3 class="modal-subtitle" data-i18n="modal.goodFor">Velegnet til</h3>
             <ul class="modal-list modal-list--pros" id="equipment-good"></ul>
 
-            <h3 class="modal-subtitle">Vær opmærksom på</h3>
+            <h3 class="modal-subtitle" data-i18n="modal.notes">Vær opmærksom på</h3>
             <ul class="modal-list modal-list--cons" id="equipment-notes"></ul>
           </div>
         </div>
 
         <div class="hero-actions" aria-label="Equipment handlinger">
-          <button class="btn btn-outline" type="button" data-equipment-back>← Tilbage til transportform</button>
-          <button class="btn btn-accent" type="button" data-open-quote>Spørg på pris</button>
+          <button class="btn btn-outline" type="button" data-equipment-back data-i18n="modal.back">← Tilbage til transportform</button>
+          <button class="btn btn-accent" type="button" data-open-quote data-i18n="hero.quote">Spørg på pris</button>
         </div>
       </div>
     </dialog>
 
     <dialog class="modal modal--quote" id="quote-modal" aria-labelledby="quote-title">
       <div class="modal-inner">
-        <button class="modal-close" type="button" data-modal-close aria-label="Luk">×</button>
-        <p class="section-label">Tilbud</p>
-        <h2 id="quote-title">Spørg <em>på pris.</em></h2>
-        <p class="section-intro">
+        <button class="modal-close" type="button" data-modal-close data-i18n-aria-label="a11y.close">×</button>
+        <p class="section-label" data-i18n="quote.label">Tilbud</p>
+        <h2 id="quote-title" data-i18n-html="quote.title">Spørg <em>på pris.</em></h2>
+        <p class="section-intro" data-i18n="quote.intro">
           For at modtage et individuelt tilbud på transport, udfyld formularen herunder. På baggrund af oplysningerne vender vi tilbage med et forslag tilpasset godstype, rute og ønsket leveringsdato.
         </p>
 
@@ -346,28 +352,28 @@
           <fieldset class="quote-fieldset">
             <legend>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18l-2 12H5L3 7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>
-              Transportform
+              <span data-i18n="quote.transport">Transportform</span>
             </legend>
-            <div class="radio-grid" role="radiogroup" aria-label="Transportform">
+            <div class="radio-grid" role="radiogroup" data-i18n-aria-label="quote.transport">
               <label class="radio-card">
                 <input type="radio" name="transport" value="Landevej" required />
-                <span class="radio-card-title">Landevej</span>
-                <span class="radio-card-sub">Road · LTL/FTL/special</span>
+                <span class="radio-card-title" data-i18n="quote.road">Landevej</span>
+                <span class="radio-card-sub" data-i18n="quote.roadSub">Road · LTL/FTL/special</span>
               </label>
               <label class="radio-card">
                 <input type="radio" name="transport" value="Sø" />
-                <span class="radio-card-title">Sø</span>
-                <span class="radio-card-sub">Sea · FCL/LCL/reefer</span>
+                <span class="radio-card-title" data-i18n="quote.sea">Sø</span>
+                <span class="radio-card-sub" data-i18n="quote.seaSub">Sea · FCL/LCL/reefer</span>
               </label>
               <label class="radio-card">
                 <input type="radio" name="transport" value="Luft" />
-                <span class="radio-card-title">Luft</span>
-                <span class="radio-card-sub">Air · general/priority/charter</span>
+                <span class="radio-card-title" data-i18n="quote.air">Luft</span>
+                <span class="radio-card-sub" data-i18n="quote.airSub">Air · general/priority/charter</span>
               </label>
               <label class="radio-card">
                 <input type="radio" name="transport" value="Rail" />
-                <span class="radio-card-title">Rail</span>
-                <span class="radio-card-sub">Intermodal/korridor</span>
+                <span class="radio-card-title" data-i18n="quote.rail">Rail</span>
+                <span class="radio-card-sub" data-i18n="quote.railSub">Intermodal/korridor</span>
               </label>
             </div>
           </fieldset>
@@ -375,13 +381,14 @@
           <fieldset class="quote-fieldset">
             <legend>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
-              Gods
+              <span data-i18n="quote.cargo">Gods</span>
             </legend>
             <label class="full">
-              <span>Beskriv godset</span>
+              <span data-i18n="quote.cargoLabel">Beskriv godset</span>
               <textarea
                 name="cargo"
                 rows="3"
+                data-i18n-placeholder="quote.cargoPlaceholder"
                 placeholder="Angiv gerne: antal kolli/paller, mål (L×B×H), vægt, evt. ønsket materieltype (fx lift, køl, kran) og særlige krav…"
               ></textarea>
             </label>
@@ -390,34 +397,34 @@
           <fieldset class="quote-fieldset">
             <legend>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
-              Yderligere oplysninger
+              <span data-i18n="quote.notes">Yderligere oplysninger</span>
             </legend>
             <label class="full">
-              <span>Beskriv gerne særlige krav eller deadlines</span>
-              <textarea name="notes" rows="4" placeholder="Fx temperaturstyret, farligt gods, kranløft ved levering…"></textarea>
+              <span data-i18n="quote.notesLabel">Beskriv gerne særlige krav eller deadlines</span>
+              <textarea name="notes" rows="4" data-i18n-placeholder="quote.notesPlaceholder" placeholder="Fx temperaturstyret, farligt gods, kranløft ved levering…"></textarea>
             </label>
           </fieldset>
 
           <fieldset class="quote-fieldset">
             <legend>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-              Afhentning &amp; levering
+              <span data-i18n="quote.pickup">Afhentning &amp; levering</span>
             </legend>
             <div class="form-grid form-grid-2x2">
               <label>
-                <span>Afhentning (postnr. + by)</span>
-                <input type="text" name="loadingPlace" placeholder="fx 9850 Hirtshals" />
+                <span data-i18n="quote.loadingPlace">Afhentning (postnr. + by)</span>
+                <input type="text" name="loadingPlace" data-i18n-placeholder="quote.loadingPlacePlaceholder" placeholder="fx 9850 Hirtshals" />
               </label>
               <label>
-                <span>Leveringssted (postnr. + by)</span>
-                <input type="text" name="unloadingPlace" placeholder="fx 1657 København V" />
+                <span data-i18n="quote.unloadingPlace">Leveringssted (postnr. + by)</span>
+                <input type="text" name="unloadingPlace" data-i18n-placeholder="quote.unloadingPlacePlaceholder" placeholder="fx 1657 København V" />
               </label>
               <label>
-                <span>Dato for afhentning</span>
+                <span data-i18n="quote.loadingDate">Dato for afhentning</span>
                 <input type="date" name="loadingDate" />
               </label>
               <label>
-                <span>Dato for levering</span>
+                <span data-i18n="quote.unloadingDate">Dato for levering</span>
                 <input type="date" name="unloadingDate" />
               </label>
             </div>
@@ -426,24 +433,24 @@
           <fieldset class="quote-fieldset">
             <legend>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
-              Kontaktoplysninger
+              <span data-i18n="quote.contactInfo">Kontaktoplysninger</span>
             </legend>
             <div class="form-grid">
               <label>
-                <span>Navn</span>
-                <input type="text" name="name" autocomplete="name" placeholder="Fornavn og efternavn" required />
+                <span data-i18n="quote.name">Navn</span>
+                <input type="text" name="name" autocomplete="name" data-i18n-placeholder="quote.namePlaceholder" placeholder="Fornavn og efternavn" required />
               </label>
               <label>
-                <span>Firma</span>
-                <input type="text" name="company" autocomplete="organization" placeholder="Firmanavn" />
+                <span data-i18n="quote.company">Firma</span>
+                <input type="text" name="company" autocomplete="organization" data-i18n-placeholder="quote.companyPlaceholder" placeholder="Firmanavn" />
               </label>
               <label>
-                <span>E-mail</span>
-                <input type="email" name="email" autocomplete="email" placeholder="dig@firma.dk" required />
+                <span data-i18n="quote.email">E-mail</span>
+                <input type="email" name="email" autocomplete="email" data-i18n-placeholder="quote.emailPlaceholder" placeholder="dig@firma.dk" required />
               </label>
               <label>
-                <span>Telefon</span>
-                <input type="tel" name="phone" autocomplete="tel" placeholder="+45 12 34 56 78" />
+                <span data-i18n="quote.phone">Telefon</span>
+                <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="quote.phonePlaceholder" placeholder="+45 12 34 56 78" />
               </label>
             </div>
           </fieldset>
@@ -451,10 +458,10 @@
           <p class="form-status" id="quote-status" aria-live="polite"></p>
 
           <div class="hero-actions">
-            <button class="btn btn-primary" type="submit">Send forespørgsel</button>
-            <button class="btn btn-outline" type="button" data-modal-close>Annuller</button>
+            <button class="btn btn-primary" type="submit" data-i18n="quote.submit">Send forespørgsel</button>
+            <button class="btn btn-outline" type="button" data-modal-close data-i18n="quote.cancel">Annuller</button>
           </div>
-          <p class="form-foot">Vi svarer typisk inden for få arbejdstimer. Forespørgslen sendes til <a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a>.</p>
+          <p class="form-foot"><span data-i18n="quote.foot">Vi svarer typisk inden for få arbejdstimer. Forespørgslen sendes til</span> <a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a>.</p>
         </form>
       </div>
     </dialog>
@@ -463,7 +470,7 @@
       <div class="footer-inner footer-grid">
         <div class="footer-brand">
           <img class="footer-logo" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" loading="lazy" data-img-key="logo" />
-          <p class="footer-subtitle">
+          <p class="footer-subtitle" data-i18n="footer.subtitle">
             Vi hedder NOR Spedition, fordi vi er forankret i Nordjylland — og fordi vi arbejder med en Nordic Spirit: ordentlighed, struktur og aftaler
             der holder.
           </p>
@@ -490,11 +497,11 @@
         <div class="footer-meta">
           <p class="footer-copy">© <span id="year"></span> NOR Spedition</p>
           <nav class="footer-links" aria-label="Links">
-            <a href="#top">Til toppen</a>
-            <a href="#team">Team</a>
-            <a href="mailto:contact@norspedition.dk">Kontakt</a>
-            <a href="transportformer.html">Transportformer</a>
-            <a href="admin.html">Admin</a>
+            <a href="#top" data-i18n="footer.top">Til toppen</a>
+            <a href="#team" data-i18n="nav.team">Team</a>
+            <a href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
+            <a href="transportformer.html" data-i18n="footer.transport">Transportformer</a>
+            <a href="admin.html" data-i18n="footer.admin">Admin</a>
           </nav>
         </div>
       </div>
