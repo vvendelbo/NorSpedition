@@ -175,8 +175,21 @@
       "transportPage.sea.desc": "Container og stykgods — planlagt, robust og omkostningsbevidst.",
       "transportPage.air.desc": "Når tiden er vigtig — hurtig afgang og klar forventningsafstemning.",
       "transportPage.rail.desc": "Et stærkt alternativ på udvalgte korridorer, når det giver mening.",
+      "transportPage.road.title": "Landevej",
+      "transportPage.sea.title": "Sø",
+      "transportPage.air.title": "Luft",
+      "transportPage.rail.title": "Rail",
+      "transportPage.courier.title": "Kurer",
+      "transportPage.express.title": "Express",
       "transportPage.courier.desc": "Direkte levering med tæt opfølgning og sporbarhed.",
       "transportPage.express.desc": "Når det haster — hurtig afgang og klar forventningsafstemning.",
+      "quote.introShort": "Udfyld formularen — vi vender tilbage med et tilbud tilpasset godstype, rute og ønsket leveringsdato.",
+      "quote.dimensions": "Mål (L×B×H)",
+      "quote.dimensionsPlaceholder": "fx 120×80×100 cm",
+      "quote.weight": "Vægt",
+      "quote.weightPlaceholder": "fx 500 kg",
+      "quote.notesCargoLabel": "Beskriv gerne godstypen, særlige krav eller deadlines",
+      "quote.footShort": "Forespørgslen sendes til",
 
       "home.latestLabel": "Nyheder",
       "home.latestH2": "Seneste indlæg",
@@ -366,8 +379,21 @@
       "transportPage.sea.desc": "Container and breakbulk — planned, robust and cost-conscious.",
       "transportPage.air.desc": "When time matters — fast departure and clear expectation setting.",
       "transportPage.rail.desc": "A strong alternative on selected corridors when it makes sense.",
+      "transportPage.road.title": "Road",
+      "transportPage.sea.title": "Sea",
+      "transportPage.air.title": "Air",
+      "transportPage.rail.title": "Rail",
+      "transportPage.courier.title": "Courier",
+      "transportPage.express.title": "Express",
       "transportPage.courier.desc": "Direct delivery with close follow-up and traceability.",
       "transportPage.express.desc": "When it is urgent — fast departure and clear expectation setting.",
+      "quote.introShort": "Fill in the form — we will get back to you with a quote tailored to cargo type, route and desired delivery date.",
+      "quote.dimensions": "Dimensions (L×W×H)",
+      "quote.dimensionsPlaceholder": "e.g. 120×80×100 cm",
+      "quote.weight": "Weight",
+      "quote.weightPlaceholder": "e.g. 500 kg",
+      "quote.notesCargoLabel": "Please describe cargo type, special requirements or deadlines",
+      "quote.footShort": "The enquiry is sent to",
 
       "home.latestLabel": "News",
       "home.latestH2": "Latest posts",
@@ -469,9 +495,11 @@
   }
 
   function init() {
+    // Danish is always the default; English only when the user has chosen it before.
+    currentLang = "da";
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && SUPPORTED.includes(stored)) currentLang = stored;
+      if (stored === "en") currentLang = "en";
     } catch {
       // ignore
     }
