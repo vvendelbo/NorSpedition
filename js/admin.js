@@ -143,7 +143,7 @@
     { key: "transport-rail", title: "Transportkort: Rail", desc: "Portræt-orienteret (3:4). Bruges på forsiden.", default: "assets/transport-rail.webp" },
 
     { key: "team-mathias-anon", title: "Portræt: Kommende kollega (anonymt)", desc: "Anonymt/neutral billede (kvadratisk, fx 800×800). Vises indtil nedtællingen er slut.", default: "assets/team-mathias-anon.png" },
-    { key: "team-mathias", title: "Portræt: Kommende kollega (offentlig)", desc: "Rigtigt portræt (kvadratisk, fx 800×800). Vises når nedtællingen er slut.", default: "assets/team-mathias-placeholder.svg" },
+    { key: "team-mathias", title: "Portræt: Kommende kollega (offentlig)", desc: "Rigtigt portræt (kvadratisk, fx 800×800). Vises når nedtællingen er slut.", default: "assets/team-mathias.png" },
     { key: "team-viktor", title: "Portræt: Viktor Mejlvang", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-viktor.png" },
     { key: "team-victor", title: "Portræt: Victor Vendelbo", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-victor-placeholder.svg" },
 
