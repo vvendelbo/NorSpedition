@@ -97,7 +97,7 @@
       "team.joinedDate": "1. juni 2026",
       "team.joined": "Tiltrådt",
       "team.welcome": "Velkommen ombord.",
-      "team.mathias.welcome": "Velkommen til Mathias — ny kollega hos NOR Spedition.",
+      "team.mathias.welcome": "Velkommen til Mathias Bruse Kristensen — kollega hos NOR Spedition.",
 
       "modal.pros": "Forcer",
       "modal.cons": "Svagheder",
@@ -301,7 +301,7 @@
       "team.joinedDate": "1 June 2026",
       "team.joined": "Joined",
       "team.welcome": "Welcome aboard.",
-      "team.mathias.welcome": "Welcome Mathias — new colleague at NOR Spedition.",
+      "team.mathias.welcome": "Welcome Mathias Bruse Kristensen — colleague at NOR Spedition.",
 
       "modal.pros": "Strengths",
       "modal.cons": "Weaknesses",
