@@ -264,7 +264,6 @@ a:hover {
   position: absolute;
   inset: 0;
   background: rgba(11, 42, 74, 0.62);
-  z-index: 1;
 }
 
 .hero-img {
@@ -274,7 +273,6 @@ a:hover {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 0;
 }
 
 .hero.hero-photo .hero-img {
@@ -292,57 +290,8 @@ a:hover {
 
 /* Show a bit more of the hero image/video on the front page */
 .hero.hero-photo {
-  /* Lock the hero to a stable "full image" format (no cropping) */
-  aspect-ratio: 16 / 9;
-  min-height: 0;
-  height: auto;
+  min-height: min(78vh, 720px);
   align-items: flex-end;
-  background: #fff;
-}
-
-.hero.hero-photo::before {
-  /* Only darken where the text sits (keep edges white/clean) */
-  background: linear-gradient(
-    180deg,
-    rgba(11, 42, 74, 0.00) 0%,
-    rgba(11, 42, 74, 0.22) 45%,
-    rgba(11, 42, 74, 0.62) 100%
-  );
-}
-
-.hero.hero-photo::after {
-  /* Ultra-wide: fade out to white on the sides */
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0) 14%,
-    rgba(255, 255, 255, 0) 86%,
-    rgba(255, 255, 255, 1) 100%
-  );
-}
-
-.hero.hero-photo img.hero-img {
-  /* Main hero image should never crop; letterbox instead */
-  object-fit: contain;
-  object-position: center;
-}
-
-.hero.hero-photo .hero-img-blur {
-  /* Blurred fill under the contained image (looks like soft "extension") */
-  object-fit: cover;
-  filter: blur(28px) saturate(1.05);
-  transform: scale(1.12);
-  opacity: 1;
-}
-
-.hero.hero-photo video.hero-img {
-  /* Video should still behave like a background */
-  object-fit: cover;
 }
 
 .hero.hero-photo .hero-img {
@@ -364,7 +313,6 @@ a:hover {
   padding: var(--space-2xl) max(var(--space-md), env(safe-area-inset-right, 0px)) var(--space-2xl)
     max(var(--space-md), env(safe-area-inset-left, 0px));
   position: relative;
-  z-index: 3;
 }
 
 .hero-kicker {
