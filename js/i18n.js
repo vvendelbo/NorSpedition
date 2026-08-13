@@ -84,6 +84,7 @@
       "team.title": "Dem <em>du ringer til.</em>",
       "team.intro": "Hos NOR Spedition arbejder du altid med et menneske — ikke et ticket-system. Bag os står langvarige partnerskaber, faste aftaler og et bredt netværk af pålidelige samarbejdspartnere, og det er det, der giver os reel global rækkevidde.",
       "team.direct": "Direkte",
+      "team.mobile": "Mobil",
       "team.email": "E-mail",
       "team.role.partner": "Partner & speditør",
       "team.role.forwarder": "Speditør",
@@ -241,7 +242,7 @@
       "nav.who": "About us",
 
       "hero.kicker": "Freight forwarding & logistics",
-      "hero.title": "Agreements <em>that hold.</em>",
+      "hero.title": "Agreements <em>that last.</em>",
       "hero.lead": "Predictability, transparency and strong partnerships — across road, sea, air and rail.",
       "hero.contact": "Contact us",
       "hero.quote": "Request a quote",
@@ -288,6 +289,7 @@
       "team.title": "The ones <em>you call.</em>",
       "team.intro": "At NOR Spedition you always work with a person — not a ticket system. Behind us are long-term partnerships, fixed agreements and a wide network of reliable partners, and that is what gives us real global reach.",
       "team.direct": "Direct",
+      "team.mobile": "Mobile",
       "team.email": "Email",
       "team.role.partner": "Partner & freight forwarder",
       "team.role.forwarder": "Freight forwarder",
@@ -360,7 +362,7 @@
       "form.subject": "Quote enquiry",
       "form.dateNotSet": "date not specified",
 
-      "footer.subtitle": "We are called NOR Spedition because we are rooted in North Jutland — and because we work with a Nordic Spirit: integrity, structure and agreements that hold.",
+      "footer.subtitle": "We are called NOR Spedition because we are rooted in North Jutland — and because we work with a Nordic Spirit: integrity, structure and agreements that last.",
       "footer.top": "Back to top",
       "footer.transport": "Transport modes",
       "footer.admin": "Admin",
