@@ -983,6 +983,19 @@ body.hints-dismissed .click-hint-floater {
   font-size: 1rem;
 }
 
+.bank-iban-list {
+  display: grid;
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.bank-currency {
+  display: inline-block;
+  min-width: 2.5rem;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+}
+
 .contact-addresses {
   display: grid;
   grid-template-columns: 1fr 1fr;

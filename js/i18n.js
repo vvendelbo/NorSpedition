@@ -12,6 +12,8 @@
       "meta.description.contact": "Kontakt NOR Spedition.",
       "meta.title.news": "NOR Spedition — Nyheder",
       "meta.description.news": "Nyheder og opdateringer fra NOR Spedition.",
+      "meta.title.bank": "NOR Spedition — Bankoplysninger",
+      "meta.description.bank": "Bankoplysninger til betaling af fakturaer fra NOR Spedition.",
 
       "a11y.navMain": "Hovednavigation",
       "a11y.navOpen": "Åbn menu",
@@ -164,6 +166,8 @@
       "footer.contactLabel": "Kontakt",
       "footer.phone": "Telefon",
       "footer.email": "E-mail",
+      "footer.home": "Forside",
+      "footer.bank": "Bank",
 
       "transportPage.kicker": "Ydelser",
       "transportPage.title": "Transportformer",
@@ -207,6 +211,14 @@
       "contact.phone": "Telefon",
       "contact.email": "E-mail",
       "contact.address": "Adresse",
+
+      "bank.label": "Betaling",
+      "bank.title": "Bankoplysninger",
+      "bank.intro": "Brug disse oplysninger ved betaling af fakturaer fra NOR Spedition. Angiv gerne fakturanummeret som betalingstekst.",
+      "bank.bank": "Bank",
+      "bank.dkAccount": "Dansk konto (DKK)",
+      "bank.reg": "Reg.nr.",
+      "bank.account": "Kontonr.",
     },
     en: {
       "meta.title": "NOR Spedition — Freight forwarding & logistics",
@@ -217,6 +229,8 @@
       "meta.description.contact": "Contact NOR Spedition.",
       "meta.title.news": "NOR Spedition — News",
       "meta.description.news": "News and updates from NOR Spedition.",
+      "meta.title.bank": "NOR Spedition — Bank details",
+      "meta.description.bank": "Bank details for paying invoices from NOR Spedition.",
 
       "a11y.navMain": "Main navigation",
       "a11y.navOpen": "Open menu",
@@ -369,6 +383,8 @@
       "footer.contactLabel": "Contact",
       "footer.phone": "Phone",
       "footer.email": "Email",
+      "footer.home": "Home",
+      "footer.bank": "Bank",
 
       "transportPage.kicker": "Services",
       "transportPage.title": "Transport modes",
@@ -412,6 +428,14 @@
       "contact.phone": "Phone",
       "contact.email": "Email",
       "contact.address": "Address",
+
+      "bank.label": "Payment",
+      "bank.title": "Bank details",
+      "bank.intro": "Use these details when paying invoices from NOR Spedition. Please include the invoice number as the payment reference.",
+      "bank.bank": "Bank",
+      "bank.dkAccount": "Danish account (DKK)",
+      "bank.reg": "Reg. no.",
+      "bank.account": "Account no.",
     },
   };
 
@@ -422,6 +446,8 @@
     "contact.html": { title: "meta.title.contact", description: "meta.description.contact" },
     "news.html": { title: "meta.title.news", description: "meta.description.news" },
     "home.html": { title: "meta.title", description: "meta.description" },
+    "bank.html": { title: "meta.title.bank", description: "meta.description.bank" },
+    bank: { title: "meta.title.bank", description: "meta.description.bank" },
   };
 
   let currentLang = "da";

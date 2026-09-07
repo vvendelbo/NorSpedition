@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+    <title>NOR Spedition — Bankoplysninger</title>
+    <meta name="description" content="Bankoplysninger til betaling af fakturaer fra NOR Spedition." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/i18n.js" defer></script>
+    <script src="js/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n-aria-label="a11y.navOpen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+          </svg>
+        </button>
+        <div class="header-right">
+          <nav class="nav-main" id="main-nav" data-i18n-aria-label="a11y.navMain">
+            <a href="index.html#transportformer" data-i18n="nav.transportModes">Transportformer</a>
+            <a href="index.html#team" data-i18n="nav.team">Team</a>
+            <a href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
+          </nav>
+          <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="bank-heading">
+        <div class="section-inner contact-block">
+          <div>
+            <p class="section-label" data-i18n="bank.label">Betaling</p>
+            <h1 id="bank-heading" data-i18n="bank.title">Bankoplysninger</h1>
+            <p class="section-intro" data-i18n="bank.intro">
+              Brug disse oplysninger ved betaling af fakturaer fra NOR Spedition. Angiv gerne fakturanummeret som betalingstekst.
+            </p>
+          </div>
+          <div class="contact-details bank-details">
+            <dl>
+              <dt data-i18n="bank.bank">Bank</dt>
+              <dd>
+                Nordea Danmark<br />
+                Prinsensgade 15<br />
+                9000 Aalborg, Danmark
+              </dd>
+
+              <dt data-i18n="bank.dkAccount">Dansk konto (DKK)</dt>
+              <dd>
+                <span data-i18n="bank.reg">Reg.nr.</span> 2214<br />
+                <span data-i18n="bank.account">Kontonr.</span> 9046&nbsp;803&nbsp;237
+              </dd>
+
+              <dt>IBAN</dt>
+              <dd class="bank-iban-list">
+                <div><span class="bank-currency">EUR</span> DK35 2000 5036 7366 92</div>
+                <div><span class="bank-currency">NOK</span> DK45 2000 5036 7367 06</div>
+                <div><span class="bank-currency">PLN</span> DK23 2000 5036 7367 14</div>
+                <div><span class="bank-currency">SEK</span> DK98 2000 5036 7367 22</div>
+              </dd>
+
+              <dt>BIC / SWIFT</dt>
+              <dd>NDEADKKK</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer compact">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> NOR Spedition</p>
+        <div class="footer-contact" aria-label="Kontakt">
+          <a class="footer-item" href="index.html" data-i18n="footer.home">Forside</a>
+          <a class="footer-item" href="mailto:contact@norspedition.dk" data-i18n="nav.contact">Kontakt</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
