@@ -14,6 +14,8 @@
       "meta.description.news": "Nyheder og opdateringer fra NOR Spedition.",
       "meta.title.bank": "NOR Spedition — Bankoplysninger",
       "meta.description.bank": "Bankoplysninger til betaling af fakturaer fra NOR Spedition.",
+      "meta.title.about": "NOR Spedition — Om os",
+      "meta.description.about": "Om NOR Spedition ApS — virksomhedsoplysninger, adresser, kontakt og bank.",
 
       "a11y.navMain": "Hovednavigation",
       "a11y.navOpen": "Åbn menu",
@@ -24,6 +26,7 @@
 
       "nav.transportModes": "Transportformer",
       "nav.team": "Team",
+      "nav.about": "Om",
       "nav.contact": "Kontakt",
       "nav.products": "Produkter",
       "nav.niceToKnow": "Nice to know",
@@ -219,6 +222,27 @@
       "bank.dkAccount": "Dansk konto (DKK)",
       "bank.reg": "Reg.nr.",
       "bank.account": "Kontonr.",
+
+      "about.label": "Om os",
+      "about.title": "NOR Spedition",
+      "about.intro": "Vi hedder NOR Spedition, fordi vi er forankret i Nordjylland — og fordi vi arbejder med en Nordic Spirit: ordentlighed, struktur og aftaler der holder.",
+      "about.body": "Vi hjælper dig med landevej, sø, luft og rail gennem stærke partnerskaber og tæt opfølgning. Du arbejder altid med et menneske — ikke et ticket-system.",
+      "about.companyLabel": "Virksomhed",
+      "about.companyTitle": "Firmaoplysninger",
+      "about.legalName": "Juridisk navn",
+      "about.email": "E-mail",
+      "about.website": "Website",
+      "about.officesLabel": "Kontorer",
+      "about.officesTitle": "Hvor du finder os",
+      "about.copenhagen": "København",
+      "about.teamLabel": "Team",
+      "about.teamTitle": "Personer bag",
+      "about.teamIntro": "Tre partnere & speditører — med direkte nummer, mobil og e-mail.",
+      "about.teamLink": "Se teamet på forsiden →",
+      "about.bankLabel": "Betaling",
+      "about.bankTitle": "Bankoplysninger",
+      "about.bankIntro": "Nordea Danmark — reg.nr., kontonr., IBAN og BIC til betaling af fakturaer.",
+      "about.bankLink": "Se alle bankoplysninger",
     },
     en: {
       "meta.title": "NOR Spedition — Freight forwarding & logistics",
@@ -231,6 +255,8 @@
       "meta.description.news": "News and updates from NOR Spedition.",
       "meta.title.bank": "NOR Spedition — Bank details",
       "meta.description.bank": "Bank details for paying invoices from NOR Spedition.",
+      "meta.title.about": "NOR Spedition — About us",
+      "meta.description.about": "About NOR Spedition ApS — company details, addresses, contact and bank.",
 
       "a11y.navMain": "Main navigation",
       "a11y.navOpen": "Open menu",
@@ -241,6 +267,7 @@
 
       "nav.transportModes": "Transport modes",
       "nav.team": "Team",
+      "nav.about": "About",
       "nav.contact": "Contact",
       "nav.products": "Products",
       "nav.niceToKnow": "Nice to know",
@@ -436,6 +463,27 @@
       "bank.dkAccount": "Danish account (DKK)",
       "bank.reg": "Reg. no.",
       "bank.account": "Account no.",
+
+      "about.label": "About us",
+      "about.title": "NOR Spedition",
+      "about.intro": "We are called NOR Spedition because we are rooted in North Jutland — and because we work with a Nordic Spirit: integrity, structure and agreements that last.",
+      "about.body": "We help you with road, sea, air and rail through strong partnerships and close follow-up. You always work with a person — not a ticket system.",
+      "about.companyLabel": "Company",
+      "about.companyTitle": "Company details",
+      "about.legalName": "Legal name",
+      "about.email": "Email",
+      "about.website": "Website",
+      "about.officesLabel": "Offices",
+      "about.officesTitle": "Where to find us",
+      "about.copenhagen": "Copenhagen",
+      "about.teamLabel": "Team",
+      "about.teamTitle": "The people behind",
+      "about.teamIntro": "Three partners & freight forwarders — with direct line, mobile and email.",
+      "about.teamLink": "See the team on the homepage →",
+      "about.bankLabel": "Payment",
+      "about.bankTitle": "Bank details",
+      "about.bankIntro": "Nordea Danmark — reg. no., account no., IBAN and BIC for paying invoices.",
+      "about.bankLink": "See full bank details",
     },
   };
 
@@ -448,6 +496,8 @@
     "home.html": { title: "meta.title", description: "meta.description" },
     "bank.html": { title: "meta.title.bank", description: "meta.description.bank" },
     bank: { title: "meta.title.bank", description: "meta.description.bank" },
+    "om.html": { title: "meta.title.about", description: "meta.description.about" },
+    om: { title: "meta.title.about", description: "meta.description.about" },
   };
 
   let currentLang = "da";

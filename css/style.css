@@ -1023,6 +1023,42 @@ body.hints-dismissed .click-hint-floater {
   color: var(--color-ink);
 }
 
+.about-intro {
+  max-width: 42rem;
+}
+
+.about-people {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.about-role {
+  margin: 0 0 0.75rem !important;
+  font-size: 0.875rem;
+}
+
+.about-more {
+  margin: var(--space-md) 0 0;
+}
+
+.about-more a {
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.about-more a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .about-people {
+    grid-template-columns: 1fr;
+  }
+}
+
 .contact-placeholder {
   color: var(--color-ink-muted);
   font-style: italic;
