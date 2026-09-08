@@ -1023,39 +1023,143 @@ body.hints-dismissed .click-hint-floater {
   color: var(--color-ink);
 }
 
-.about-intro {
-  max-width: 42rem;
+.about-page {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.about-page h1 {
+  margin: 0 0 var(--space-lg);
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg) var(--space-xl);
+}
+
+.about-block--full {
+  grid-column: 1 / -1;
+}
+
+.about-block h2 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.about-block h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.about-dl {
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.about-dl > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.about-dl dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.about-dl dd {
+  margin: 0;
+  font-size: 0.975rem;
+}
+
+.about-dl--compact {
+  gap: 0.35rem;
+}
+
+.about-dl--compact > div {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.about-dl--bank {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.about-addresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.about-addresses address {
+  margin: 0;
+  font-style: normal;
+  font-size: 0.975rem;
+  line-height: 1.45;
 }
 
 .about-people {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
-  margin-top: var(--space-md);
 }
 
 .about-role {
-  margin: 0 0 0.75rem !important;
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  color: var(--color-ink-muted);
+}
+
+.about-bank-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.about-bank-head h2 {
+  margin: 0;
+}
+
+.about-bank-head a {
   font-size: 0.875rem;
-}
-
-.about-more {
-  margin: var(--space-md) 0 0;
-}
-
-.about-more a {
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
 }
 
-.about-more a:hover {
+.about-bank-head a:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 800px) {
-  .about-people {
+  .about-grid,
+  .about-people,
+  .about-addresses,
+  .about-dl--bank {
     grid-template-columns: 1fr;
+  }
+
+  .about-dl--compact > div {
+    grid-template-columns: 4rem 1fr;
   }
 }
 
