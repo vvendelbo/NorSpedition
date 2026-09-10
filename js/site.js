@@ -11,6 +11,7 @@
 
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
+  let publishedCustomerPortalUrl = "";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
@@ -21,10 +22,20 @@
       if (!json || typeof json !== "object") return {};
       const images = json.images && typeof json.images === "object" ? json.images : {};
       const formEndpoint = typeof json.formEndpoint === "string" ? json.formEndpoint : "";
-      return { images, formEndpoint };
+      const customerPortalUrl =
+        typeof json.customerPortalUrl === "string" ? json.customerPortalUrl.trim() : "";
+      return { images, formEndpoint, customerPortalUrl };
     } catch {
-      return { images: {}, formEndpoint: "" };
+      return { images: {}, formEndpoint: "", customerPortalUrl: "" };
     }
+  }
+
+  function applyCustomerPortalLinks(url) {
+    const href = typeof url === "string" ? url.trim() : "";
+    if (!href) return;
+    document.querySelectorAll("[data-portal-link]").forEach((el) => {
+      if (el instanceof HTMLAnchorElement) el.href = href;
+    });
   }
 
   let dbPromise = null;
@@ -192,8 +203,10 @@
     const published = await loadPublishedOverrides();
     publishedOverrides = (published && published.images) || {};
     publishedFormEndpoint = (published && published.formEndpoint) || "";
+    publishedCustomerPortalUrl = (published && published.customerPortalUrl) || "";
     applyImageOverrides();
     applyVideoOverrides();
+    applyCustomerPortalLinks(publishedCustomerPortalUrl);
   })();
 
   const yearEl = document.getElementById("year");
