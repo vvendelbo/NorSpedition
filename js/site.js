@@ -12,7 +12,7 @@
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
   let publishedPortalLoginUrl = "";
-  const DEFAULT_PORTAL_LOGIN_URL = "https://nexum-customer-portal.vercel.app/login";
+  const DEFAULT_PORTAL_LOGIN_URL = "https://portal.norspedition.dk";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
