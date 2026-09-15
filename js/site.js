@@ -11,6 +11,8 @@
 
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
+  let publishedPortalLoginUrl = "";
+  const DEFAULT_PORTAL_LOGIN_URL = "https://nexum-customer-portal.vercel.app/login";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
@@ -21,9 +23,10 @@
       if (!json || typeof json !== "object") return {};
       const images = json.images && typeof json.images === "object" ? json.images : {};
       const formEndpoint = typeof json.formEndpoint === "string" ? json.formEndpoint : "";
-      return { images, formEndpoint };
+      const portalLoginUrl = typeof json.portalLoginUrl === "string" ? json.portalLoginUrl : "";
+      return { images, formEndpoint, portalLoginUrl };
     } catch {
-      return { images: {}, formEndpoint: "" };
+      return { images: {}, formEndpoint: "", portalLoginUrl: "" };
     }
   }
 
@@ -185,15 +188,25 @@
     }));
   }
 
+  function applyPortalLoginLinks() {
+    const url = publishedPortalLoginUrl || DEFAULT_PORTAL_LOGIN_URL;
+    document.querySelectorAll("[data-portal-login]").forEach((el) => {
+      if (el instanceof HTMLAnchorElement) el.href = url;
+    });
+  }
+
   // Apply overrides ASAP, then re-apply when published overrides load
   applyImageOverrides();
   applyVideoOverrides();
+  applyPortalLoginLinks();
   (async () => {
     const published = await loadPublishedOverrides();
     publishedOverrides = (published && published.images) || {};
     publishedFormEndpoint = (published && published.formEndpoint) || "";
+    publishedPortalLoginUrl = (published && published.portalLoginUrl) || "";
     applyImageOverrides();
     applyVideoOverrides();
+    applyPortalLoginLinks();
   })();
 
   const yearEl = document.getElementById("year");

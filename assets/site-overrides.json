@@ -5,5 +5,6 @@
     "team-victor": "assets/team-victor.png"
   },
   "formEndpoint": "https://formspree.io/f/mgodewkp",
+  "portalLoginUrl": "https://nexum-customer-portal.vercel.app/login",
   "version": 1
 }
