@@ -12,7 +12,7 @@
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
   let publishedPortalLoginUrl = "";
-  const DEFAULT_PORTAL_LOGIN_URL = "https://portal.norspedition.dk";
+  const DEFAULT_PORTAL_LOGIN_URL = "https://portal.norspedition.dk/login";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
