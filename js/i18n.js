@@ -28,7 +28,7 @@
       "nav.team": "Team",
       "nav.about": "Om",
       "nav.contact": "Kontakt",
-      "nav.login": "Kunde-login",
+      "nav.portal": "Kundeportal",
       "nav.products": "Produkter",
       "nav.niceToKnow": "Nice to know",
       "nav.convert": "Omregning",
@@ -47,6 +47,7 @@
       "hero.lead": "Forudsigelighed, transparens og stærke partnerskaber — på tværs af landevej, sø, luft og rail.",
       "hero.contact": "Kontakt os",
       "hero.quote": "Spørg på pris",
+      "hero.portal": "Kundeportal",
       "hero.transport": "Se transportformer",
 
       "keypoints.label": "Hvorfor NOR Spedition",
@@ -172,7 +173,7 @@
       "footer.email": "E-mail",
       "footer.home": "Forside",
       "footer.bank": "Bank",
-      "footer.login": "Kunde-login",
+      "footer.portal": "Kundeportal",
 
       "transportPage.kicker": "Ydelser",
       "transportPage.title": "Transportformer",
@@ -260,7 +261,7 @@
       "nav.team": "Team",
       "nav.about": "About",
       "nav.contact": "Contact",
-      "nav.login": "Customer login",
+      "nav.portal": "Customer portal",
       "nav.products": "Products",
       "nav.niceToKnow": "Nice to know",
       "nav.convert": "Conversion",
@@ -279,6 +280,7 @@
       "hero.lead": "Predictability, transparency and strong partnerships — across road, sea, air and rail.",
       "hero.contact": "Contact us",
       "hero.quote": "Request a quote",
+      "hero.portal": "Customer portal",
       "hero.transport": "View transport modes",
 
       "keypoints.label": "Why NOR Spedition",
@@ -404,7 +406,7 @@
       "footer.email": "Email",
       "footer.home": "Home",
       "footer.bank": "Bank",
-      "footer.login": "Customer login",
+      "footer.portal": "Customer portal",
 
       "transportPage.kicker": "Services",
       "transportPage.title": "Transport modes",
