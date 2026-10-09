@@ -12,8 +12,7 @@
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
   let publishedCustomerPortalUrl = "";
-  let publishedPortalLoginUrl = "";
-  const DEFAULT_PORTAL_LOGIN_URL = "https://portal.norspedition.dk/login";
+  const DEFAULT_CUSTOMER_PORTAL_URL = "https://portal.norspedition.dk";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
@@ -26,16 +25,14 @@
       const formEndpoint = typeof json.formEndpoint === "string" ? json.formEndpoint : "";
       const customerPortalUrl =
         typeof json.customerPortalUrl === "string" ? json.customerPortalUrl.trim() : "";
-      const portalLoginUrl = typeof json.portalLoginUrl === "string" ? json.portalLoginUrl : "";
-      return { images, formEndpoint, customerPortalUrl, portalLoginUrl };
+      return { images, formEndpoint, customerPortalUrl };
     } catch {
-      return { images: {}, formEndpoint: "", customerPortalUrl: "", portalLoginUrl: "" };
+      return { images: {}, formEndpoint: "", customerPortalUrl: "" };
     }
   }
 
-  function applyCustomerPortalLinks(url) {
-    const href = typeof url === "string" ? url.trim() : "";
-    if (!href) return;
+  function applyCustomerPortalLinks() {
+    const href = publishedCustomerPortalUrl || DEFAULT_CUSTOMER_PORTAL_URL;
     document.querySelectorAll("[data-portal-link]").forEach((el) => {
       if (el instanceof HTMLAnchorElement) el.href = href;
     });
@@ -199,27 +196,18 @@
     }));
   }
 
-  function applyPortalLoginLinks() {
-    const url = publishedPortalLoginUrl || DEFAULT_PORTAL_LOGIN_URL;
-    document.querySelectorAll("[data-portal-login]").forEach((el) => {
-      if (el instanceof HTMLAnchorElement) el.href = url;
-    });
-  }
-
   // Apply overrides ASAP, then re-apply when published overrides load
   applyImageOverrides();
   applyVideoOverrides();
-  applyPortalLoginLinks();
+  applyCustomerPortalLinks();
   (async () => {
     const published = await loadPublishedOverrides();
     publishedOverrides = (published && published.images) || {};
     publishedFormEndpoint = (published && published.formEndpoint) || "";
     publishedCustomerPortalUrl = (published && published.customerPortalUrl) || "";
-    publishedPortalLoginUrl = (published && published.portalLoginUrl) || "";
     applyImageOverrides();
     applyVideoOverrides();
-    applyCustomerPortalLinks(publishedCustomerPortalUrl);
-    applyPortalLoginLinks();
+    applyCustomerPortalLinks();
   })();
 
   const yearEl = document.getElementById("year");

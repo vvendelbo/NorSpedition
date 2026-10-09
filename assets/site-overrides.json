@@ -6,6 +6,5 @@
   },
   "formEndpoint": "https://formspree.io/f/mgodewkp",
   "customerPortalUrl": "https://portal.norspedition.dk",
-  "portalLoginUrl": "https://portal.norspedition.dk/login",
   "version": 1
 }
