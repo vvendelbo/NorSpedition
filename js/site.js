@@ -259,18 +259,6 @@
   }
 
   // ===================================================================
-  // Click-hint dismissal (after first click on any transport card)
-  // ===================================================================
-  const HINT_DISMISS_KEY = "nor-spedition.click-hint-dismissed.v1";
-  if (localStorage.getItem(HINT_DISMISS_KEY) === "1") {
-    document.body.classList.add("hints-dismissed");
-  }
-  function dismissHints() {
-    localStorage.setItem(HINT_DISMISS_KEY, "1");
-    document.body.classList.add("hints-dismissed");
-  }
-
-  // ===================================================================
   // Transport content (forces, weaknesses, equipment with rich detail)
   // ===================================================================
   let transportContent = {};
@@ -354,7 +342,6 @@
       if (equipmentDialog && equipmentDialog.open) equipmentDialog.close();
       if (!keepOpen) {
         transportDialog.showModal();
-        dismissHints();
         const inner = transportDialog.querySelector(".modal-inner");
         if (inner instanceof HTMLElement) inner.scrollTop = 0;
       }
