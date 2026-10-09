@@ -12,6 +12,8 @@
   let publishedOverrides = {};
   let publishedFormEndpoint = "";
   let publishedCustomerPortalUrl = "";
+  let publishedPortalLoginUrl = "";
+  const DEFAULT_PORTAL_LOGIN_URL = "https://portal.norspedition.dk/login";
   const objectUrlCache = new Map();
 
   async function loadPublishedOverrides() {
@@ -24,9 +26,10 @@
       const formEndpoint = typeof json.formEndpoint === "string" ? json.formEndpoint : "";
       const customerPortalUrl =
         typeof json.customerPortalUrl === "string" ? json.customerPortalUrl.trim() : "";
-      return { images, formEndpoint, customerPortalUrl };
+      const portalLoginUrl = typeof json.portalLoginUrl === "string" ? json.portalLoginUrl : "";
+      return { images, formEndpoint, customerPortalUrl, portalLoginUrl };
     } catch {
-      return { images: {}, formEndpoint: "", customerPortalUrl: "" };
+      return { images: {}, formEndpoint: "", customerPortalUrl: "", portalLoginUrl: "" };
     }
   }
 
@@ -196,17 +199,27 @@
     }));
   }
 
+  function applyPortalLoginLinks() {
+    const url = publishedPortalLoginUrl || DEFAULT_PORTAL_LOGIN_URL;
+    document.querySelectorAll("[data-portal-login]").forEach((el) => {
+      if (el instanceof HTMLAnchorElement) el.href = url;
+    });
+  }
+
   // Apply overrides ASAP, then re-apply when published overrides load
   applyImageOverrides();
   applyVideoOverrides();
+  applyPortalLoginLinks();
   (async () => {
     const published = await loadPublishedOverrides();
     publishedOverrides = (published && published.images) || {};
     publishedFormEndpoint = (published && published.formEndpoint) || "";
     publishedCustomerPortalUrl = (published && published.customerPortalUrl) || "";
+    publishedPortalLoginUrl = (published && published.portalLoginUrl) || "";
     applyImageOverrides();
     applyVideoOverrides();
     applyCustomerPortalLinks(publishedCustomerPortalUrl);
+    applyPortalLoginLinks();
   })();
 
   const yearEl = document.getElementById("year");

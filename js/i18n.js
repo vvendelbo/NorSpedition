@@ -29,6 +29,7 @@
       "nav.about": "Om",
       "nav.contact": "Kontakt",
       "nav.portal": "Kundeportal",
+      "nav.login": "Kunde-login",
       "nav.products": "Produkter",
       "nav.niceToKnow": "Nice to know",
       "nav.convert": "Omregning",
@@ -173,6 +174,7 @@
       "footer.email": "E-mail",
       "footer.home": "Forside",
       "footer.bank": "Bank",
+      "footer.login": "Kunde-login",
 
       "transportPage.kicker": "Ydelser",
       "transportPage.title": "Transportformer",
@@ -261,6 +263,7 @@
       "nav.about": "About",
       "nav.contact": "Contact",
       "nav.portal": "Customer portal",
+      "nav.login": "Customer login",
       "nav.products": "Products",
       "nav.niceToKnow": "Nice to know",
       "nav.convert": "Conversion",
@@ -405,6 +408,7 @@
       "footer.email": "Email",
       "footer.home": "Home",
       "footer.bank": "Bank",
+      "footer.login": "Customer login",
 
       "transportPage.kicker": "Services",
       "transportPage.title": "Transport modes",
