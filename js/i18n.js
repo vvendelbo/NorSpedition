@@ -62,8 +62,8 @@
 
       "transport.label": "De fire transportformer",
       "transport.title": "Én af fire — <em>altid med samme service.</em>",
-      "transport.intro": "I bund og grund findes der fire transportformer: landevej, sø, luft og rail. Vi excellerer i alle fire gennem stærke partnerskaber og et bredt netværk — og hjælper dig med at vælge rigtigt ud fra tid, pris og robusthed. Klik på et kort for at se forcer, svagheder og hvilke materieltyper vi typisk anvender.",
-      "transport.hint": "Tryk på et kort",
+      "transport.intro": "I bund og grund findes der fire transportformer: landevej, sø, luft og rail. Vi excellerer i alle fire gennem stærke partnerskaber og et bredt netværk — og hjælper dig med at vælge rigtigt ud fra tid, pris og robusthed.",
+      "transport.hint": "Prøv at trykke for mere info",
       "transport.road.badge": "01 · Landevej",
       "transport.road.title": "Landevej",
       "transport.road.desc": "Fleksibel distribution i Europa med høj frekvens og tydelig plan.",
@@ -294,8 +294,8 @@
 
       "transport.label": "The four transport modes",
       "transport.title": "One of four — <em>always the same service.</em>",
-      "transport.intro": "At its core there are four transport modes: road, sea, air and rail. We excel in all four through strong partnerships and a wide network — and help you choose right based on time, price and reliability. Click a card to see strengths, weaknesses and the equipment types we typically use.",
-      "transport.hint": "Tap a card",
+      "transport.intro": "At its core there are four transport modes: road, sea, air and rail. We excel in all four through strong partnerships and a wide network — and help you choose right based on time, price and reliability.",
+      "transport.hint": "Try tapping for more info",
       "transport.road.badge": "01 · Road",
       "transport.road.title": "Road",
       "transport.road.desc": "Flexible distribution across Europe with high frequency and a clear plan.",

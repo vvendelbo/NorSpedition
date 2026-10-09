@@ -258,15 +258,49 @@
   }
 
   // ===================================================================
-  // Click-hint dismissal (after first click on any transport card)
+  // Click-hint: show when transport cards scroll into view, dismiss on click
   // ===================================================================
   const HINT_DISMISS_KEY = "nor-spedition.click-hint-dismissed.v1";
-  if (localStorage.getItem(HINT_DISMISS_KEY) === "1") {
+  const clickHint = document.querySelector("[data-click-hint]");
+  const transportGrid = document.querySelector("#transportformer .transport-grid");
+  let hintDismissed = localStorage.getItem(HINT_DISMISS_KEY) === "1";
+
+  if (hintDismissed) {
     document.body.classList.add("hints-dismissed");
   }
+
   function dismissHints() {
+    hintDismissed = true;
     localStorage.setItem(HINT_DISMISS_KEY, "1");
     document.body.classList.add("hints-dismissed");
+    if (clickHint instanceof HTMLElement) {
+      clickHint.classList.remove("is-visible");
+    }
+  }
+
+  if (!hintDismissed && clickHint instanceof HTMLElement && transportGrid instanceof HTMLElement) {
+    const revealHint = () => {
+      if (hintDismissed) return;
+      clickHint.classList.add("is-visible");
+    };
+
+    if ("IntersectionObserver" in window) {
+      const hintObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              revealHint();
+              hintObserver.disconnect();
+              break;
+            }
+          }
+        },
+        { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+      );
+      hintObserver.observe(transportGrid);
+    } else {
+      revealHint();
+    }
   }
 
   // ===================================================================
