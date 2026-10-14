@@ -47,7 +47,6 @@
       "hero.lead": "Forudsigelighed, transparens og stærke partnerskaber — på tværs af landevej, sø, luft og rail.",
       "hero.contact": "Kontakt os",
       "hero.quote": "Spørg på pris",
-      "hero.portal": "Kundeportal",
       "hero.transport": "Se transportformer",
 
       "keypoints.label": "Hvorfor NOR Spedition",
@@ -280,7 +279,6 @@
       "hero.lead": "Predictability, transparency and strong partnerships — across road, sea, air and rail.",
       "hero.contact": "Contact us",
       "hero.quote": "Request a quote",
-      "hero.portal": "Customer portal",
       "hero.transport": "View transport modes",
 
       "keypoints.label": "Why NOR Spedition",
