@@ -16,7 +16,6 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/i18n.js" defer></script>
-    <script src="js/transport-content.js" defer></script>
     <script src="js/site.js" defer></script>
   </head>
   <body>
@@ -32,23 +31,11 @@
         </button>
         <div class="header-right">
           <nav class="nav-main" id="main-nav" data-i18n-aria-label="a11y.navMain">
-            <a href="products.html" data-i18n="nav.products">Produkter</a>
-            <details class="nav-dropdown">
-              <summary data-i18n="nav.niceToKnow">Nice to know</summary>
-              <div class="nav-dropdown-menu" role="menu">
-                <a href="conversion.html" role="menuitem" data-i18n="nav.convert">Omregning</a>
-                <a href="insurance.html" role="menuitem" data-i18n="nav.insurance">Transportforsikring</a>
-                <a href="customs.html" role="menuitem" data-i18n="nav.customs">Told</a>
-                <a href="incoterms.html" role="menuitem" data-i18n="nav.incoterms">Incoterms</a>
-              </div>
-            </details>
-            <a href="road.html" data-i18n="nav.road">Landevej</a>
-            <a href="sea.html" data-i18n="nav.sea">Søfragt</a>
-            <a href="air.html" data-i18n="nav.air">Luftfragt</a>
-            <a href="rail.html" data-i18n="nav.rail">Jernbane</a>
-            <a href="news.html" data-i18n="nav.news">Nyheder</a>
-            <a href="who.html" data-i18n="nav.who">Hvem er vi</a>
-            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+            <a href="index.html#transportformer" data-i18n="nav.transportModes">Transportformer</a>
+            <a href="index.html#team" data-i18n="nav.team">Team</a>
+            <a href="om.html" data-i18n="nav.about">Om</a>
+            <a href="contact.html" data-i18n="nav.contact" aria-current="page">Kontakt</a>
+            <a class="nav-login" href="https://portal.norspedition.dk" data-portal-link rel="noopener noreferrer" data-i18n="nav.portal">Kundeportal</a>
           </nav>
           <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
             <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
@@ -65,37 +52,73 @@
             <p class="section-label" data-i18n="contact.label">Kontakt</p>
             <h1 id="contact-heading" data-i18n="contact.title">Kontakt os</h1>
             <p class="section-intro" data-i18n="contact.intro">
-              Ring eller skriv. Hvis du sender få oplysninger (hvad, hvorfra, hvortil og hvornår), så vender vi hurtigt tilbage.
+              Udfyld formularen, så vender vi hurtigt tilbage. Du kan også ringe eller skrive direkte.
             </p>
+
+            <div class="contact-details">
+              <dl>
+                <dt data-i18n="contact.email">E-mail</dt>
+                <dd><a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a></dd>
+                <dt data-i18n="contact.address">Adresse</dt>
+                <dd>
+                  NOR Spedition ApS<br />
+                  Vodbindervej 2<br />
+                  9850 Hirtshals<br />
+                  Danmark
+                </dd>
+                <dt>CVR</dt>
+                <dd>46&nbsp;42&nbsp;72&nbsp;62</dd>
+              </dl>
+            </div>
           </div>
-          <div class="contact-details">
-            <dl>
-              <dt data-i18n="contact.phone">Telefon</dt>
-              <dd><span class="contact-placeholder">[telefonnummer]</span></dd>
-              <dt data-i18n="contact.email">E-mail</dt>
-              <dd><span class="contact-placeholder">[email@firma.dk]</span></dd>
-              <dt data-i18n="contact.address">Adresse</dt>
-              <dd>
-                <span class="contact-placeholder">[Firmanavn]<br />[gade og nr.]<br />[postnr. og by]<br />Danmark</span>
-              </dd>
-              <dt>CVR</dt>
-              <dd>46&nbsp;42&nbsp;72&nbsp;62</dd>
-            </dl>
-          </div>
+
+          <form class="quote-form contact-form" id="contact-form" novalidate>
+            <fieldset class="quote-fieldset">
+              <legend data-i18n="contact.formLegend">Skriv til os</legend>
+              <div class="form-grid">
+                <label>
+                  <span data-i18n="quote.name">Navn</span>
+                  <input type="text" name="name" autocomplete="name" data-i18n-placeholder="quote.namePlaceholder" placeholder="Fornavn og efternavn" required />
+                </label>
+                <label>
+                  <span data-i18n="quote.company">Firma</span>
+                  <input type="text" name="company" autocomplete="organization" data-i18n-placeholder="quote.companyPlaceholder" placeholder="Firmanavn" />
+                </label>
+                <label>
+                  <span data-i18n="quote.email">E-mail</span>
+                  <input type="email" name="email" autocomplete="email" data-i18n-placeholder="quote.emailPlaceholder" placeholder="dig@firma.dk" required />
+                </label>
+                <label>
+                  <span data-i18n="quote.phone">Telefon</span>
+                  <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="quote.phonePlaceholder" placeholder="+45 12 34 56 78" />
+                </label>
+                <label class="full">
+                  <span data-i18n="contact.message">Besked</span>
+                  <textarea name="message" rows="5" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Hvad kan vi hjælpe med?" required></textarea>
+                </label>
+              </div>
+            </fieldset>
+
+            <p class="form-status" id="contact-status" aria-live="polite"></p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="submit" data-i18n="contact.submit">Send besked</button>
+            </div>
+            <p class="form-foot"><span data-i18n="contact.foot">Vi svarer typisk inden for få arbejdstimer. Beskeden sendes til</span> <a href="mailto:contact@norspedition.dk">contact@norspedition.dk</a>.</p>
+          </form>
         </div>
       </section>
     </main>
 
     <footer class="site-footer compact">
       <div class="footer-inner">
-        <p>© <span id="year"></span> NOR Spedition</p>
-        <div class="footer-contact" aria-label="Kontakt">
-          <span class="footer-label" data-i18n="footer.contactLabel">Kontakt</span>
-          <a class="footer-item" href="tel:[telefonnummer]" data-i18n="footer.phone">Telefon</a>
-          <a class="footer-item" href="mailto:[email@firma.dk]" data-i18n="footer.email">E-mail</a>
+        <p>© <span id="year"></span> NOR Spedition · CVR 46&nbsp;42&nbsp;72&nbsp;62</p>
+        <div class="footer-contact" aria-label="Links">
+          <a class="footer-item" href="index.html" data-i18n="footer.home">Forside</a>
+          <a class="footer-item" href="om.html" data-i18n="nav.about">Om</a>
+          <a class="footer-item" href="bank.html" data-i18n="footer.bank">Bank</a>
         </div>
       </div>
     </footer>
   </body>
 </html>
-

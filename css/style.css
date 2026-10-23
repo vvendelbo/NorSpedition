@@ -971,6 +971,14 @@ h2 em,
   align-items: start;
 }
 
+.contact-block .contact-details {
+  margin-top: var(--space-lg);
+}
+
+.contact-form {
+  margin: 0;
+}
+
 .contact-details dl {
   margin: 0;
 }

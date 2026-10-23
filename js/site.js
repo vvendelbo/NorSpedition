@@ -561,6 +561,60 @@
   }
 
   // ===================================================================
+  // Shared form submission (quote + contact)
+  // ===================================================================
+  function bindFormSubmit(form, statusEl, { subjectKey, successKey, buildBody }) {
+    if (!(form instanceof HTMLFormElement)) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+
+      const setStatus = (msg, tone) => {
+        if (!statusEl) return;
+        statusEl.textContent = msg;
+        statusEl.dataset.tone = tone || "";
+      };
+
+      const endpoint =
+        form.getAttribute("data-endpoint") ||
+        localStorage.getItem("nor-spedition.form-endpoint") ||
+        publishedFormEndpoint ||
+        "";
+
+      const subject = `${t(subjectKey)} — ${payload.transport || "NOR Spedition"}`;
+
+      if (endpoint) {
+        try {
+          setStatus(t("form.sending"), "pending");
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: { Accept: "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+              _subject: subject,
+              ...payload,
+            }),
+          });
+          if (!res.ok) throw new Error(String(res.status));
+          setStatus(t(successKey), "success");
+          form.reset();
+          return;
+        } catch (err) {
+          setStatus(t("form.error"), "warn");
+        }
+      }
+
+      const body = buildBody(payload);
+      const mailto = `mailto:contact@norspedition.dk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus(t("form.mailto"), "success");
+      window.location.href = mailto;
+    });
+  }
+
+  // ===================================================================
   // Quote modal + form submission
   // ===================================================================
   if (quoteDialog instanceof HTMLDialogElement) {
@@ -601,54 +655,11 @@
       if (e.key === "Escape" && quoteDialog.open) quoteDialog.close();
     });
 
-    if (form instanceof HTMLFormElement) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-
-        const fd = new FormData(form);
-        const payload = Object.fromEntries(fd.entries());
-
-        const setStatus = (msg, tone) => {
-          if (!statusEl) return;
-          statusEl.textContent = msg;
-          statusEl.dataset.tone = tone || "";
-        };
-
-        // Read endpoint from:
-        // - data-endpoint (hardcoded)
-        // - localStorage (admin test)
-        // - published overrides (assets/site-overrides.json)
-        const endpoint =
-          form.getAttribute("data-endpoint") ||
-          localStorage.getItem("nor-spedition.form-endpoint") ||
-          publishedFormEndpoint ||
-          "";
-
-        // If an endpoint is configured, POST to it (Formspree/Basin/Getform/Netlify etc.)
-        if (endpoint) {
-          try {
-            setStatus(t("form.sending"), "pending");
-            const res = await fetch(endpoint, {
-              method: "POST",
-              headers: { "Accept": "application/json", "Content-Type": "application/json" },
-              body: JSON.stringify({
-                _subject: `${t("form.subject")} — ${payload.transport || "NOR Spedition"}`,
-                ...payload,
-              }),
-            });
-            if (!res.ok) throw new Error(String(res.status));
-            setStatus(t("form.success"), "success");
-            form.reset();
-            return;
-          } catch (err) {
-            setStatus(t("form.error"), "warn");
-          }
-        }
-
-        // Fallback: mailto: with pre-filled body
-        const subject = `${t("form.subject")} — ${payload.transport || "NOR Spedition"}`;
-        const body = [
+    bindFormSubmit(form, statusEl, {
+      subjectKey: "form.subject",
+      successKey: "form.success",
+      buildBody: (payload) =>
+        [
           `${t("quote.name")}: ${payload.name || ""}`,
           `${t("quote.company")}: ${payload.company || ""}`,
           `${t("quote.email")}: ${payload.email || ""}`,
@@ -671,11 +682,25 @@
           `${t("quote.company")}: ${payload.company || ""}`,
           `${t("quote.email")}: ${payload.email || ""}`,
           `${t("quote.phone")}: ${payload.phone || ""}`,
-        ].join("\n");
-        const mailto = `mailto:contact@norspedition.dk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        setStatus(t("form.mailto"), "success");
-        window.location.href = mailto;
-      });
-    }
+        ].join("\n"),
+    });
   }
+
+  // ===================================================================
+  // Contact page form
+  // ===================================================================
+  bindFormSubmit(document.getElementById("contact-form"), document.getElementById("contact-status"), {
+    subjectKey: "contact.subject",
+    successKey: "contact.success",
+    buildBody: (payload) =>
+      [
+        `${t("quote.name")}: ${payload.name || ""}`,
+        `${t("quote.company")}: ${payload.company || ""}`,
+        `${t("quote.email")}: ${payload.email || ""}`,
+        `${t("quote.phone")}: ${payload.phone || ""}`,
+        "",
+        `— ${t("contact.message")} —`,
+        `${payload.message || ""}`,
+      ].join("\n"),
+  });
 })();
