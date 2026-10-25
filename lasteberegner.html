@@ -33,26 +33,15 @@
       }
       .loadcalc-frame-wrap {
         flex: 1;
-        min-height: min(78dvh, 900px);
+        min-height: min(88dvh, 980px);
         background: #f7f3ee;
       }
       .loadcalc-frame {
         display: block;
         width: 100%;
-        height: min(78dvh, 900px);
+        height: min(88dvh, 980px);
         border: 0;
         background: #f7f3ee;
-      }
-      .loadcalc-fallback {
-        margin: 0;
-        padding: 1rem 1.25rem 0.25rem;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #64748b;
-      }
-      .loadcalc-fallback a {
-        color: #c17a3a;
-        font-weight: 600;
       }
       @media (max-width: 768px) {
         .loadcalc-frame,
@@ -94,15 +83,11 @@
     </header>
 
     <main>
-      <p class="loadcalc-fallback">
-        <span data-i18n="loadCalc.fallback">Åbner ikke?</span>
-        <a href="https://tms.norspedition.dk/lasteberegner" data-i18n="loadCalc.openDirect">Åbn lasteberegner direkte</a>
-      </p>
       <div class="loadcalc-frame-wrap">
         <iframe
           class="loadcalc-frame"
           title="NOR 3D Lasteberegner"
-          src="https://tms.norspedition.dk/lasteberegner"
+          src="https://tms.norspedition.dk/lasteberegner?embed=1"
           loading="eager"
           referrerpolicy="no-referrer-when-downgrade"
           allow="clipboard-write"
