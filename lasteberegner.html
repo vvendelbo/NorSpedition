@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+    <title>NOR Spedition — 3D Lasteberegner</title>
+    <meta
+      name="description"
+      content="Beregn ladmeter og lasteplan for sættevogn med NORs gratis 3D lasteberegner."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .loadcalc-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+      }
+      .loadcalc-page main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        padding: 0;
+      }
+      .loadcalc-frame-wrap {
+        flex: 1;
+        min-height: min(78dvh, 900px);
+        background: #f7f3ee;
+      }
+      .loadcalc-frame {
+        display: block;
+        width: 100%;
+        height: min(78dvh, 900px);
+        border: 0;
+        background: #f7f3ee;
+      }
+      .loadcalc-fallback {
+        margin: 0;
+        padding: 1rem 1.25rem 0.25rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+      .loadcalc-fallback a {
+        color: #c17a3a;
+        font-weight: 600;
+      }
+      @media (max-width: 768px) {
+        .loadcalc-frame,
+        .loadcalc-frame-wrap {
+          height: min(85dvh, 820px);
+          min-height: 520px;
+        }
+      }
+    </style>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/site.js" defer></script>
+  </head>
+  <body class="loadcalc-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="NOR Spedition">
+          <img class="brand-mark" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" data-img-key="logo" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n-aria-label="a11y.navOpen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+          </svg>
+        </button>
+        <div class="header-right">
+          <nav class="nav-main" id="main-nav" data-i18n-aria-label="a11y.navMain">
+            <a href="index.html#transportformer" data-i18n="nav.transportModes">Transportformer</a>
+            <a href="index.html#team" data-i18n="nav.team">Team</a>
+            <a href="lasteberegner.html" data-i18n="nav.loadCalc" aria-current="page">Lasteberegner</a>
+            <a href="om.html" data-i18n="nav.about">Om</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+            <a class="nav-login" href="https://portal.norspedition.dk" data-portal-link rel="noopener noreferrer" data-i18n="nav.portal">Kundeportal</a>
+          </nav>
+          <div class="lang-switch" data-i18n-aria-label="a11y.langSwitch">
+            <button class="lang-btn" type="button" data-lang="da" aria-pressed="true" aria-label="Dansk">🇩🇰</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">🇬🇧</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <p class="loadcalc-fallback">
+        <span data-i18n="loadCalc.fallback">Åbner ikke?</span>
+        <a href="https://tms.norspedition.dk/lasteberegner" data-i18n="loadCalc.openDirect">Åbn lasteberegner direkte</a>
+      </p>
+      <div class="loadcalc-frame-wrap">
+        <iframe
+          class="loadcalc-frame"
+          title="NOR 3D Lasteberegner"
+          src="https://tms.norspedition.dk/lasteberegner"
+          loading="eager"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </main>
+
+    <footer class="site-footer" aria-label="Footer">
+      <div class="footer-inner footer-grid">
+        <div class="footer-brand">
+          <img class="footer-logo" src="assets/logo-nor-spedition.png" alt="NOR Spedition" width="223" height="124" loading="lazy" data-img-key="logo" />
+          <p class="footer-subtitle" data-i18n="footer.subtitle">Spedition &amp; logistik med klare aftaler.</p>
+          <p class="footer-cvr">CVR-nr. 46&nbsp;42&nbsp;72&nbsp;62</p>
+        </div>
+        <div class="footer-meta">
+          <p class="footer-copy">© <span id="year"></span> NOR Spedition</p>
+          <nav class="footer-links" aria-label="Links">
+            <a href="index.html" data-i18n="footer.home">Forside</a>
+            <a href="lasteberegner.html" data-i18n="nav.loadCalc">Lasteberegner</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+            <a href="https://portal.norspedition.dk" data-portal-link rel="noopener noreferrer" data-i18n="footer.portal">Kundeportal</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
