@@ -1,0 +1,12 @@
+{
+  "name": "nor-spedition",
+  "version": "1.0.0",
+  "description": "NOR Spedition website with Vercel Analytics",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
