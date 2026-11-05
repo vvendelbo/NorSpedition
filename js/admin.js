@@ -145,6 +145,7 @@
     { key: "team-mathias", title: "Portræt: Mathias Bruse Kristensen", desc: "Portræt (kvadratisk, fx 800×800).", default: "assets/team-mathias.png" },
     { key: "team-viktor", title: "Portræt: Viktor Mejlvang", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-viktor.png" },
     { key: "team-victor", title: "Portræt: Victor Vendelbo", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-victor-placeholder.svg" },
+    { key: "team-theodor", title: "Portræt: Theodor Ervill", desc: "Kvadratisk portræt (fx 800×800).", default: "assets/team-theodor.png" },
 
     { key: "equipment-default", title: "Default for materiel-visualisering", desc: "Fallback-billede der vises når et specifikt materiel-id ikke har eget billede.", default: "assets/card-placeholder.svg" },
 
